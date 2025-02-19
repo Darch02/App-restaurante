@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+
+.encabezado{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #337357;
+  padding: 5px;
+  margin: auto;
+  }
+.titulo-encabezado{
+  font-family: "Inter";
+  font-size: 18px;
+  color: white;
+  margin: 2px;
+}
+
