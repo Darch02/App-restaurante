@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Inter');
 
+body{
+  width: 373px;
+  margin: auto;
+  border: black;
+}
+
 .encabezado{
   display: flex;
   justify-content: space-between;
@@ -14,4 +20,37 @@
   color: white;
   margin: 2px;
 }
+#logo{
+  height: 50px;
+  width: 50px;
+}
 
+main{
+  padding: 10px;
+}
+select{
+  margin: 10px 0px;
+  width: 40%;
+  height: 30px;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+#img-mesas{
+  height: 80px;
+  width: 80px;
+}
+.mesa{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #D0D0CE;
+  height: 152px;
+  width: 142px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.mesa p{
+  font-family: 'Inter';
+  font-size: 16px;
+}

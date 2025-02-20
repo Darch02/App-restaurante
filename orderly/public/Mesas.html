@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="" href="/vite.svg" />
+    <link rel="icon" type="" href="../src/assets/Logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../src/styles/Mesas.css"/>
     <title>App Restaurante - mesas</title>
 </head>
 <body>
-    <div>
-        <div class = "encabezado">
-            <img href= "../src/assets/Logo.png" alt="logo"/>
-            <p class="titulo-encabezado">ORDERLY</p>
-        </div>
+    <div class = "encabezado">
+        <img id="logo" src= "../src/assets/Logo.png" alt="logo"/>
+        <p class="titulo-encabezado">ORDERLY</p>
     </div>
+    <main>
+        <select class= "selector-sección">
+            <option>Piso 1</option>
+            <option>Piso 2</option>
+        </select>
+        <div id="contenedor-mesas">
+            <div class="mesa">
+                <img id="img-mesas" src="../src/assets/imagen-mesa.svg"/>
+                <p>Mesa 1</p>
+            </div>
+        </div>
+    </main>
+    
 </body>
 
 
