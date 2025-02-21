@@ -1,0 +1,23 @@
+@use 'variables' as *;
+.encabezado{
+    display: flex;
+    position: fixed;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $verde;
+    padding: 5px;
+    height: 8%;
+}
+.titulo-encabezado{
+    font-family: $tipografia;
+    font-size: 20px;
+    color: white;
+    margin: 2px;
+}
+#logo{
+    height: 45px;
+    width: 45px;
+}

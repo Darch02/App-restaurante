@@ -1,0 +1,61 @@
+// @import url('https://fonts.googleapis.com/css?family=Inter');
+@use 'variables' as *;
+
+body{
+  padding: 0px;
+  margin:0px;
+}
+section{
+  margin: 0px;
+  border-color: black;
+  height: 828px;;
+  overflow: hidden;
+}
+main{
+  padding: 10px;
+  height: 82%;
+}
+select{
+  margin: 10px 0px;
+  width: 40%;
+  height: 30px;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+.img-mesas{
+  border-radius: 20px;
+  width: 60px;
+  height: 60px;
+}
+.mesa{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $gris-claro;
+  height: 142px;
+  width: 142px;
+  border-radius: 20px;
+  justify-content: center;
+  margin-block: 10px;
+  overflow: hidden
+}
+.mesa:active{
+  background-color: $gris-oscuro;
+  p{
+    color:$gris-claro;
+  }
+  img{
+    background-color: #D0D0CE;
+  }
+}
+.mesa p{
+  font-family: $tipografia;
+  font-size: auto;
+  font-weight:400;
+}
+#contenedor-mesas{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
