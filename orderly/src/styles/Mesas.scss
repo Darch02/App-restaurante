@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Inter');
+$verde: #337357;
+$gris-claro: #D0D0CE;
+$gris-oscuro: #5F555D;
+$tipografia: 'Inter';
 
 body{
   width: 373px;
@@ -10,12 +14,12 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #337357;
+  background-color: $verde;
   padding: 5px;
   margin: auto;
   }
 .titulo-encabezado{
-  font-family: "Inter";
+  font-family: $tipografia;
   font-size: 18px;
   color: white;
   margin: 2px;
@@ -44,14 +48,14 @@ select{
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #D0D0CE;
+  background-color: $gris-claro;
   height: 152px;
   width: 142px;
   border-radius: 10px;
   justify-content: center;
 }
 .mesa p{
-  font-family: 'Inter';
+  font-family: $tipografia;
   font-size: 16px;
 }
 #contenedor-mesas{
@@ -65,7 +69,7 @@ footer{
   grid-template: 40px 20px/ 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
-  background-color: #337357;
+  background-color: $verde;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   margin-top: 225px;
