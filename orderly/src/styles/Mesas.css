@@ -35,7 +35,7 @@ select{
   padding-left: 10px;
   border-radius: 10px;
 }
-#img-mesas{
+.img-mesas{
   height: 80px;
   width: 80px;
 }
@@ -53,4 +53,24 @@ select{
 .mesa p{
   font-family: 'Inter';
   font-size: 16px;
+}
+#contenedor-mesas{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+footer{
+  display: grid;
+  grid-template: 40px 20px/ 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  background-color: #337357;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: 225px;
+}
+footer img{
+  height: 40px;
+  width: 40px;
 }
