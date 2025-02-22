@@ -1,19 +1,12 @@
 // @import url('https://fonts.googleapis.com/css?family=Inter');
 @use 'variables' as *;
-
-body{
-  padding: 0px;
-  margin:0px;
-}
-section{
-  margin: 0px;
-  border-color: black;
-  height: 828px;;
-  overflow: hidden;
-}
 main{
   padding: 10px;
-  height: 82%;
+  flex: 1;
+  margin-top: 60px; // Para evitar que el contenido quede debajo del header
+  margin-bottom: 60px; // Para evitar que el contenido quede detrás del footer
+  overflow-y: auto;
+  height: calc(100vh - 120px);
 }
 select{
   margin: 10px 0px;

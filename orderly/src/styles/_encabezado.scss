@@ -2,14 +2,14 @@
 .encabezado{
     display: flex;
     position: fixed;
-    top:0px;
-    left: 0px;
-    right: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
     justify-content: space-between;
     align-items: center;
     background-color: $verde;
     padding: 5px;
-    height: 8%;
 }
 .titulo-encabezado{
     font-family: $tipografia;
