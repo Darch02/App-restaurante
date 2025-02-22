@@ -4,6 +4,7 @@
     <link rel="icon" type="" href="../src/assets/Logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../src/styles/main.scss"/>
+    <link rel="json" href="">
     <title>App Restaurante - mesas</title>
 </head>
 <body>
@@ -11,7 +12,7 @@
         <img id="logo" src= "../src/assets/Logo.png" alt="logo"/>
         <p class="titulo-encabezado">ORDERLY</p>
     </header>
-    <main>
+    <main id="contenido principal">
         <select class= "selector-sección">
             <option>Piso 1</option>
             <option>Piso 2</option>
@@ -33,14 +34,15 @@
                 <img class= "img-mesas" src="../src/assets/icono-mesa.svg" alt="imagen mesa"/>
                 <p>Mesa 4</p>
             </div>
-        </div>
+        </div>`
     </main>
     <footer>
-        <img src="../src/assets/icono-mesa.svg" alt="icono mesas">
-        <img src="../src/assets/icono-menu.svg" alt="icono menú">
-        <img src="../src/assets/icono-pedidos.svg" alt="icono pedidos">
-        <p><strong>Mesas</strong></p>
+        <img id="icono-mesas" src="../src/assets/icono-mesa.svg" alt="icono mesas">
+        <img id="icono-menu" src="../src/assets/icono-menu.svg" alt="icono menú">
+        <img id="icono-pedidos" src="../src/assets/icono-pedidos.svg" alt="icono pedidos">
+        <p>Mesas</p>
         <p>Menú</p>
         <p>Pedidos</p>
     </footer>
+    <script src="./src/js/main.js"></script>
 </body>

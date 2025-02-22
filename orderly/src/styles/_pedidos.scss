@@ -1,0 +1,33 @@
+@use 'variables' as *;
+
+#contenedor-pedidos{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.pedido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    width: 155px;
+    margin: 5px;
+}
+.pedido div{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    font-family: $tipografia;
+    font-weight: 600;
+}
+.pedido button{
+    width: 100%;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
