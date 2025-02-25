@@ -1,7 +1,5 @@
-
-
 document.getElementById("icono-pedidos").addEventListener("click", function() {
-    document.getElementById("contenido principal").innerHTML = `
+    document.getElementById("contenido-principal").innerHTML = `
     <select class= "selector-sección">
     <option>Piso 1</option>
     <option>Piso 2</option>
@@ -39,7 +37,7 @@ document.getElementById("icono-pedidos").addEventListener("click", function() {
 });
 
 document.getElementById("icono-mesas").addEventListener("click", function() {
-    document.getElementById("contenido principal").innerHTML = `
+    document.getElementById("contenido-principal").innerHTML = `
         <select class= "selector-sección">
             <option>Piso 1</option>
             <option>Piso 2</option>

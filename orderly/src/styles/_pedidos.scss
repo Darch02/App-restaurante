@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    font-family: $tipografia;
 }
 
 .pedido {
@@ -14,20 +15,38 @@
     border-radius: 10px;
     padding: 10px;
     width: 155px;
+    height: 150px;
     margin: 5px;
+    margin-top: 30px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); //Sombra suave
+    border: 1px solid $gris-claro; //Borde ligero semitransparente
 }
 .pedido div{
     display: flex;
     justify-content: space-between;
-    margin: 0px;
+    margin-left: 0px;
     padding: 0px;
     width: 100%;
     font-family: $tipografia;
     font-weight: 600;
 }
-.pedido button{
-    width: 100%;
+
+.pedido button {
+    position: relative;
+    top: 5px; 
+    width: 80%;
+    height: 20%;
     background-color: black;
     color: white;
-    border-radius: 10px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.1s, color 0.1s;
+
+    //Cuando se hace clic
+    &:active {
+        background-color: white;
+        color: black;
+    }
 }
