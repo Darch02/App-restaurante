@@ -10,3 +10,12 @@ body{
     padding: 0px;
     margin: 0px;
   }
+
+main{
+  padding: 20px;
+  height: 608px;
+  flex: 1;
+  margin-top: 160px; // Para evitar que el contenido quede debajo del header
+  margin-bottom: 60px; // Para evitar que el contenido quede detrás del footer
+  overflow-y: auto;
+}
