@@ -1,11 +1,13 @@
 import Mesas from "./mesas";
 import Pedidos from "./pedidos";
 import Menu from "./menu";
+import editarMesas from "./editarMesas";
 
 const routes = [
     { path: '/mesas', component: Mesas },
     { path: '/pedidos', component: Pedidos },
     { path: '/menu', component: Menu},
+    { path: '/editarMesas', component: editarMesas}
 ];
 
 const root = document.getElementById("contenido-principal");
@@ -24,7 +26,7 @@ async function navigateTo(hash) {
       if (root.firstChild) {
         root.removeChild(root.firstChild);
       }
-      const newComponent = await route.component(); // 🔹 Esperamos la carga del componente
+      const newComponent = await route.component(navigateTo); // 🔹 Esperamos la carga del componente
         if (newComponent instanceof Node) {
             root.appendChild(newComponent);
         } else {
@@ -32,6 +34,10 @@ async function navigateTo(hash) {
         }
      }
 }
+
+window.onpopstate = () => {
+  navigateTo(window.location.pathname);
+};
 
 const currentPath = window.location.pathname || defaultRoute;
 navigateTo(defaultRoute);

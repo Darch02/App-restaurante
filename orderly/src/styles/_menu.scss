@@ -6,7 +6,10 @@
     flex-wrap: wrap;
     font-family: $tipografia;
 }
-
+.producto img{
+    width: 130px;
+    height:auto ;
+}
 .producto {
     display: flex;
     flex-direction: column;
