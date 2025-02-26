@@ -30,6 +30,7 @@ select{
   overflow: hidden;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); //Sombra suave
   border: 1px solid $gris-claro; //Borde ligero semitransparente
+  transition: transform 0.2s ease;
 }
 
 .mesa:active{
@@ -40,6 +41,7 @@ select{
   img{
     background-color: $gris-oscuro;
   }
+  transform: scale(0.95);
 }
 .mesa p{
   font-family: $tipografia;

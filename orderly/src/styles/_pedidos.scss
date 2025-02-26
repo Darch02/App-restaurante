@@ -41,11 +41,12 @@
     border-radius: 15px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.1s, color 0.1s;
+    transition: background-color 0.1s, color 0.1s, transform 0.2s ease;;
 
     //Cuando se hace clic
     &:active {
         background-color: white;
         color: black;
+        transform: scale(0.95);
     }
 }

@@ -77,18 +77,19 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("icono-menu").addEventListener("click", function(){
         document.getElementById("contenido-principal").innerHTML = `
         <div class="cajabuscar"><form method="get" id="buscarform">
-    <fieldset>
-        <input type="text" id="s" value="" placeholder="Buscar"  />
-        <button type="button" class="button">🔍</button> 
+            <input type="text" id="s" value="" placeholder="Buscar"  />
+            <button type="button" class="button">🔍</button> 
         <i class="search"></i>
-    </fieldset>
-</form></div>
+        </form></div>
 <div id="contenedor-categoria">
     <div class="categoria-scroll">
         <button class="categoria">Sopas</button>
         <button class="categoria">Jugos</button>
         <button class="categoria">Carnes</button>
         <button class="categoria">Postres</button>
+        <button class="categoria">Desayunos</button>
+        <button class="categoria">Almuerzos</button>
+        <button class="categoria">Pasta</button>
     </div>
     <div id="contenedor-menu" >
         <div class="menu">
