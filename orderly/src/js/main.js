@@ -1,9 +1,11 @@
 import Mesas from "./mesas";
 import Pedidos from "./pedidos";
+import Menu from "./menu";
 
 const routes = [
     { path: '/mesas', component: Mesas },
     { path: '/pedidos', component: Pedidos },
+    { path: '/menu', component: Menu},
 ];
 
 const root = document.getElementById("contenido-principal");
@@ -35,6 +37,9 @@ const currentPath = window.location.pathname || defaultRoute;
 navigateTo(defaultRoute);
 const iconoPedidos = document.getElementById('icono-pedidos')
 const iconoMesas = document.getElementById('icono-mesas')
+const iconoMenu = document.getElementById('icono-menu')
+
 
 iconoPedidos.addEventListener('click', () => {navigateTo('/pedidos')})
 iconoMesas.addEventListener('click',() => {navigateTo('/mesas')})
+iconoMenu.addEventListener('click',() => {navigateTo('/menu')})
