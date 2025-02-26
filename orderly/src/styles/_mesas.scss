@@ -1,13 +1,5 @@
 // @import url('https://fonts.googleapis.com/css?family=Inter');
 @use 'variables' as *;
-main{
-  padding: 20px;
-  height: 738px;
-  flex: 1;
-  margin-top: 160px; // Para evitar que el contenido quede debajo del header
-  margin-bottom: 60px; // Para evitar que el contenido quede detrás del footer
-  overflow-y: auto;
-}
 select{
   margin: 15px 20px;
   width: 40%;
@@ -59,4 +51,16 @@ select{
   justify-content: space-around;
   flex-wrap: wrap; 
   padding-top: 30px;
+}
+.mesa div{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.icono-editar{
+  left:5px;
+  bottom: 5px;
+  width: 30px;
+  height: 30px;
 }
