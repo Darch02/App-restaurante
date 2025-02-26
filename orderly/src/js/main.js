@@ -1,63 +1,40 @@
-document.getElementById("icono-pedidos").addEventListener("click", function() {
-    document.getElementById("contenido-principal").innerHTML = `
-    <select class= "selector-sección">
-    <option>Piso 1</option>
-    <option>Piso 2</option>
-    </select>
-    <div id="contenedor-pedidos" >
-        <div class="pedido">
-            <div>
-                <p class="numero-mesa">Mesa 1</p><p class="estado-pedido">Activo</p>
-            </div>
-            <p>descripción pedido</p>
-            <button>terminar pedido</button>
-        </div>
-        <div class="pedido">
-            <div>
-                <p class="numero-mesa">Mesa 2</p><p class="estado-pedido">Activo</p>
-            </div>
-            <p>descripción pedido</p>
-            <button>terminar pedido</button>
-        </div>
-        <div class="pedido">
-            <div>
-                <p class="numero-mesa">Mesa 3</p><p class="estado-pedido">Activo</p>
-            </div>
-            <p>descripción pedido</p>
-            <button>terminar pedido</button>
-        </div>
-        <div class="pedido">
-            <div>
-                <p class="numero-mesa">Mesa 4</p><p class="estado-pedido">Activo</p>
-            </div>
-            <p>descripción pedido</p>
-            <button>terminar pedido</button>
-        </div>
-    </div>`; 
-});
+import Mesas from "./mesas";
+import Pedidos from "./pedidos";
 
-document.getElementById("icono-mesas").addEventListener("click", function() {
-    document.getElementById("contenido-principal").innerHTML = `
-        <select class= "selector-sección">
-            <option>Piso 1</option>
-            <option>Piso 2</option>
-        </select>
-        <div id="contenedor-mesas">
-            <div class="mesa">
-                <img class= "img-mesas" src="../src/assets/icono-mesa.svg" alt="imagen mesa"/>
-                <p>Mesa 1</p>
-            </div>
-            <div class="mesa">
-                <img class= "img-mesas" src="../src/assets/icono-mesa.svg" alt="imagen mesa"/>
-                <p>Mesa 2</p>
-            </div>
-            <div class="mesa">
-                <img class= "img-mesas" src="../src/assets/icono-mesa.svg" alt="imagen mesa"/>
-                <p>Mesa 3</p>
-            </div>
-            <div class="mesa">
-                <img class= "img-mesas" src="../src/assets/icono-mesa.svg" alt="imagen mesa"/>
-                <p>Mesa 4</p>
-            </div>
-        </div>`
-});
+const routes = [
+    { path: '/mesas', component: Mesas },
+    { path: '/pedidos', component: Pedidos },
+];
+
+const root = document.getElementById("contenido-principal");
+const defaultRoute = '/mesas';
+
+async function navigateTo(hash) {
+    const route = routes.find((routeFound) => routeFound.path === hash);
+    
+    if (route && route.component) {
+      window.history.pushState(
+        {},
+        route.path,
+        window.location.origin + route.path,
+      );
+  
+      if (root.firstChild) {
+        root.removeChild(root.firstChild);
+      }
+      const newComponent = await route.component(); // 🔹 Esperamos la carga del componente
+        if (newComponent instanceof Node) {
+            root.appendChild(newComponent);
+        } else {
+            console.error("Error: route.component() no devolvió un nodo válido.");
+        }
+     }
+}
+
+const currentPath = window.location.pathname || defaultRoute;
+navigateTo(defaultRoute);
+const iconoPedidos = document.getElementById('icono-pedidos')
+const iconoMesas = document.getElementById('icono-mesas')
+
+iconoPedidos.addEventListener('click', () => {navigateTo('/pedidos')})
+iconoMesas.addEventListener('click',() => {navigateTo('/mesas')})
