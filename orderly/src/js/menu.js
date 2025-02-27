@@ -1,4 +1,4 @@
-async function Menu(navegateTo) {
+async function Menu(navigateTo) {
     const response = await fetch('/Menu.html'); // Carga el HTML externo
     const htmlText = await response.text(); // Convierte la respuesta en texto HTML
     const container = document.createElement('div'); // Crear un contenedor temporal

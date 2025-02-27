@@ -1,5 +1,5 @@
-async function editarMesas(navigateTo) {
-    const response = await fetch('/EditarMesas.html'); // Carga el HTML externo
+async function verpedido(navigateTo) {
+    const response = await fetch('/Verpedido.html'); // Carga el HTML externo
     const htmlText = await response.text(); // Convierte la respuesta en texto HTML
     const container = document.createElement('div'); // Crear un contenedor temporal
     container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
@@ -7,4 +7,4 @@ async function editarMesas(navigateTo) {
     return container;
   }
   
-  export default editarMesas;
+  export default verpedido;

@@ -4,6 +4,7 @@ import Menu from "./menu";
 import editarMesas from "./editarMesas";
 import menu_aniadir from "./menu_aniadir";
 import PopUpMesa from "./popUpMesa";
+import verpedido from "./verpedido";
 
 const routes = [
     { path: '/mesas', component: Mesas },
@@ -11,7 +12,8 @@ const routes = [
     { path: '/menu', component: Menu},
     { path: '/editarMesas', component: editarMesas},
     { path: '/menu_aniadir', component: menu_aniadir},
-    { path: '/popUpMesa', component:PopUpMesa}
+    { path: '/popUpMesa', component:PopUpMesa},
+    { path: '/verpedido', component: verpedido},
 ];
 
 const root = document.getElementById("contenido-principal");
