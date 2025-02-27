@@ -7,13 +7,14 @@
     font-family: $tipografia;
 }
 .producto img{
-    width: 130px;
-    height:auto ;
+    width: 120px;
+    height: 80px;
 }
 .producto {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     border: 3px solid black;
     border-radius: 10px;
     padding: 10px;
@@ -24,6 +25,14 @@
     overflow: hidden;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); //Sombra suave
     border: 1px solid $gris-claro; //Borde ligero semitransparente
+}
+.nombre-producto,
+.precio-producto {
+  margin: 5px 0;
+}
+
+.nombre-producto{
+    height: 40px;
 }
 
 .cajabuscar {
@@ -120,4 +129,44 @@
     }
 }
 
+.editar{
+  display: flex;
+  justify-self: right;
+  border-radius: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  border-width: 1px;
+  font-size: 14px;
+  background: #fff;
+  padding: 5px 10px 5px 10px;;
+  transition: background 0.3s ease, transform 0.2s ease;
+
+}
+
+.editar:active {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    transform: scale(0.95);
+}
+
+.add{
+    height: 30px;
+    bottom: 10px; /* Ajusta la distancia desde la parte inferior */
+    right: 10px; /* Ajusta la distancia desde la derecha */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.2s;
+
+    &:active {
+        background-color: $verde;
+        color:white;
+        transform: scale(0.95);
+    }
+
+}
 

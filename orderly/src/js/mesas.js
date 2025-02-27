@@ -6,8 +6,14 @@ async function Mesas(navigateTo) {
     const container = document.createElement('div'); // Crear un contenedor temporal
     container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
 
-    const edit= container.getElementsByClassName("icono-editar-grande")[0]
-;    edit.addEventListener('click',() => {navigateTo('/editarMesas')});
+    const edit= container.getElementsByClassName("icono-editar-grande")[0];
+    edit.addEventListener('click',() => {navigateTo('/editarMesas')});
+
+    // Agregar evento a cada mesa
+    const mesas = container.querySelectorAll(".mesa");
+    mesas.forEach(mesa => {
+        mesa.addEventListener('click', () => navigateTo('/menu_aniadir'));
+    });
 
     return container;
   }

@@ -2,12 +2,14 @@ import Mesas from "./mesas";
 import Pedidos from "./pedidos";
 import Menu from "./menu";
 import editarMesas from "./editarMesas";
+import menu_aniadir from "./menu_aniadir";
 
 const routes = [
     { path: '/mesas', component: Mesas },
     { path: '/pedidos', component: Pedidos },
     { path: '/menu', component: Menu},
-    { path: '/editarMesas', component: editarMesas}
+    { path: '/editarMesas', component: editarMesas},
+    { path: '/menu_aniadir', component: menu_aniadir},
 ];
 
 const root = document.getElementById("contenido-principal");
