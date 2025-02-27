@@ -3,6 +3,7 @@ import Pedidos from "./pedidos";
 import Menu from "./menu";
 import editarMesas from "./editarMesas";
 import menu_aniadir from "./menu_aniadir";
+import PopUpMesa from "./popUpMesa";
 
 const routes = [
     { path: '/mesas', component: Mesas },
@@ -10,6 +11,7 @@ const routes = [
     { path: '/menu', component: Menu},
     { path: '/editarMesas', component: editarMesas},
     { path: '/menu_aniadir', component: menu_aniadir},
+    { path: '/popUpMesa', component:PopUpMesa}
 ];
 
 const root = document.getElementById("contenido-principal");
@@ -42,7 +44,7 @@ window.onpopstate = () => {
 };
 
 const currentPath = window.location.pathname || defaultRoute;
-navigateTo(defaultRoute);
+navigateTo(currentPath);
 const iconoPedidos = document.getElementById('icono-pedidos')
 const iconoMesas = document.getElementById('icono-mesas')
 const iconoMenu = document.getElementById('icono-menu')
