@@ -7,12 +7,17 @@ async function Mesas(navigateTo) {
 
     // navegación a la página de editar
     const edit= container.getElementsByClassName("icono-editar-grande")[0];
-    edit.addEventListener('click',() => {navigateTo('/editarMesas')});
+    edit.addEventListener('click',() => navigateTo('/editarMesas'));
 
     // Agregar evento a cada mesa
+    // const mesas = container.querySelectorAll(".mesa");
+    // mesas.forEach(mesa => {
+    //     mesa.addEventListener('click', () => navigateTo('/menu_aniadir'));
+    // });
+
     const mesas = container.querySelectorAll(".mesa");
     mesas.forEach(mesa => {
-        mesa.addEventListener('click', () => navigateTo('/menu_aniadir'));
+        mesa.addEventListener('click', () => navigateTo('/popUpMesa'));
     });
 
     // navegación al pop up de la mesa
