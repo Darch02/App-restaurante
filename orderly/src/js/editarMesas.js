@@ -4,6 +4,11 @@ async function editarMesas(navigateTo) {
     const container = document.createElement('div'); // Crear un contenedor temporal
     container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
 
+    const mesas = container.querySelectorAll(".mesa");
+    mesas.forEach(mesa => {
+        mesa.addEventListener('click', () => navigateTo('/popUpEditarMesa'));
+    });
+
     return container;
   }
   
