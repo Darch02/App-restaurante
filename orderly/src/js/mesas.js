@@ -10,19 +10,16 @@ async function Mesas(navigateTo) {
     edit.addEventListener('click',() => navigateTo('/editarMesas'));
 
     // Agregar evento a cada mesa
-    // const mesas = container.querySelectorAll(".mesa");
-    // mesas.forEach(mesa => {
-    //     mesa.addEventListener('click', () => navigateTo('/menu_aniadir'));
-    // });
-
     const mesas = container.querySelectorAll(".mesa");
     mesas.forEach(mesa => {
-        mesa.addEventListener('click', () => navigateTo('/popUpMesa'));
+        mesa.addEventListener('click', () => navigateTo('/menu_aniadir'));
     });
 
-    // navegación al pop up de la mesa
-    // const mesa= container.getElementsByClassName('mesa')[0];
-    // mesa.addEventListener('click',() => {} );
+    // const mesas = container.querySelectorAll(".mesa");
+    // mesas.forEach(mesa => {
+    //     mesa.addEventListener('click', () => navigateTo('/popUpMesa'));
+    // });
+
     return container;
   }
   

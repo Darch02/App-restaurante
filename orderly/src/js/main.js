@@ -25,51 +25,73 @@ async function navigateTo(hash) {
   const route = routes.find((routeFound) => routeFound.path === hash);
   
   if (route && route.component) {
-      window.history.pushState({}, route.path, window.location.origin + route.path);
+    window.history.pushState({}, route.path, window.location.origin + route.path);
       
-      if (route.isPopup) {
+    if (route.isPopup) {
           // 🔹 Manejar como pop-up
-          const popUpContainer = document.createElement("div");
-          popUpContainer.classList.add("popup-container"); // Aplica estilos CSS para el fondo del pop-up
-          
-          const newComponent = await route.component(navigateTo);
-          if (newComponent instanceof Node) {
-              popUpContainer.appendChild(newComponent);
-              document.body.appendChild(popUpContainer);
-              
-              // 🔹 Cerrar pop-up al hacer clic fuera del contenido
-              popUpContainer.addEventListener("click", (e) => {
-                  if (e.target === popUpContainer) {
-                      document.body.removeChild(popUpContainer);
-                      window.history.back(); // Volver a la pantalla anterior
-                  }
-              });
-          }
-      } else {
+        abrirPopUp(route);
+    } else {
           // 🔹 Pantallas normales (no pop-ups)
-          if (root.firstChild) {
-              root.removeChild(root.firstChild);
-          }
-          const newComponent = await route.component(navigateTo);
-          if (newComponent instanceof Node) {
-              root.appendChild(newComponent);
-          } else {
-              console.error("Error: route.component() no devolvió un nodo válido.");
-          }
-      }
+        abrir(route);
+    }
+
+    localStorage.setItem("actualRoute", route.path);
+
   }
 }
 
 window.onpopstate = () => {
-  navigateTo(window.location.pathname);
+//   navigateTo(window.location.pathname);
 };
 
-const currentPath = window.location.pathname || defaultRoute;
+window.onload = () => {
+    ruta = localStorage.getItem("actualRoute");
+    navigateTo(ruta);
+};
+
+function abrirPopUp(route) {
+
+    const popUpContainer = document.createElement("div");
+    popUpContainer.classList.add("popup-container"); // Aplica estilos CSS para el fondo del pop-up
+    
+    const getcomponet = new Promise((resolve,reject)=>{resolve(route.component(navigateTo));})
+    getcomponet.then((newComponent) => {
+        if (newComponent instanceof Node) {
+            popUpContainer.appendChild(newComponent);
+            document.body.appendChild(popUpContainer);
+            
+            // 🔹 Cerrar pop-up al hacer clic fuera del contenido
+            popUpContainer.addEventListener("click", (e) => {
+                if (e.target === popUpContainer) {
+                    document.body.removeChild(popUpContainer);
+                    window.history.back(); // Volver a la pantalla anterior
+                }
+            });
+        };
+    });
+}
+
+function abrir(route){
+
+    if (root.firstChild) {
+        root.removeChild(root.firstChild);
+    }
+    const getcomponet = new Promise((resolve,reject)=>{resolve(route.component(navigateTo));})
+    getcomponet.then((newComponent) =>{
+        if (newComponent instanceof Node) {
+            root.appendChild(newComponent);
+        } else {
+            console.error("Error: route.component() no devolvió un nodo válido.");
+        }
+    });
+}
+
+// ruta que se muestra al inicio
 navigateTo(defaultRoute);
+
 const iconoPedidos = document.getElementById('icono-pedidos')
 const iconoMesas = document.getElementById('icono-mesas')
 const iconoMenu = document.getElementById('icono-menu')
-
 
 iconoPedidos.addEventListener('click', () => {navigateTo('/pedidos')})
 iconoMesas.addEventListener('click',() => {navigateTo('/mesas')})
