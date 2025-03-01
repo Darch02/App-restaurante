@@ -7,6 +7,8 @@ import PopUpMesa from "./popUpMesa";
 import verpedido from "./verpedido";
 import PopUpEditarMesa from "./popUpEditarMesa";
 
+window.onload = init;
+let root ;
 const routes = [
     { path: '/mesas', component: Mesas },
     { path: '/pedidos', component: Pedidos },
@@ -18,35 +20,31 @@ const routes = [
     { path: '/popUpEditarMesa', component:PopUpEditarMesa, isPopup: true}
 ];
 
-const root = document.getElementById("contenido-principal");
-const defaultRoute = '/mesas';
+function init(){
+    root = document.getElementById("contenido-principal");
+    const defaultRoute = '/mesas';
+    let ruta = window.location.hash.substring(1) || defaultRoute; // Quita el "#" y usa la ruta
+    navigateTo(ruta);
+}
 
-async function navigateTo(hash) {
-  const route = routes.find((routeFound) => routeFound.path === hash);
+async function navigateTo(hash,addToHistory = true) {
+    const route = routes.find((routeFound) => routeFound.path === hash);
   
-  if (route && route.component) {
-    window.history.pushState({}, route.path, window.location.origin + route.path);
-      
-    if (route.isPopup) {
-          // 🔹 Manejar como pop-up
-        abrirPopUp(route);
-    } else {
-          // 🔹 Pantallas normales (no pop-ups)
-        abrir(route);
+    if (route && route.component) {
+        if (addToHistory) {
+            window.history.pushState({}, route.path, window.location.origin + `#${route.path}`);
+          }
+  
+        if (route.isPopup) {
+            abrirPopUp(route);
+        } else {
+            abrir(route);
+        }
     }
-
-    localStorage.setItem("actualRoute", route.path);
-
-  }
 }
 
 window.onpopstate = () => {
-//   navigateTo(window.location.pathname);
-};
-
-window.onload = () => {
-    ruta = localStorage.getItem("actualRoute");
-    navigateTo(ruta);
+    navigateTo(window.location.hash.substring(1), false);
 };
 
 function abrirPopUp(route) {
@@ -86,8 +84,6 @@ function abrir(route){
     });
 }
 
-// ruta que se muestra al inicio
-navigateTo(defaultRoute);
 
 const iconoPedidos = document.getElementById('icono-pedidos')
 const iconoMesas = document.getElementById('icono-mesas')

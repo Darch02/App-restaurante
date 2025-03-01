@@ -4,10 +4,10 @@ async function PopUpEditarMesa(navigateTo) {
     const container = document.createElement('div'); // Crear un contenedor temporal
     container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
     
-    // container.querySelector(".popup-close").addEventListener("click", () => {
-    //     document.body.removeChild(container.parentElement);
-    //     window.history.back(); // Volver a la pantalla anterior
-    // });
+    container.getElementsByTagName('form')[0].addEventListener("submit", (e) => {
+        e.preventDefault(); // 🔥 Evita la recarga
+    });
+    
 
     return container;
 }
