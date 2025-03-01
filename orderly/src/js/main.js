@@ -6,6 +6,7 @@ import menu_aniadir from "./menu_aniadir";
 import PopUpMesa from "./popUpMesa";
 import verpedido from "./verpedido";
 import PopUpEditarMesa from "./popUpEditarMesa";
+import PopUpAñadirMesa from "./popUpAñadirMesa";
 
 window.onload = init;
 let root ;
@@ -17,7 +18,8 @@ const routes = [
     { path: '/menu_aniadir', component: menu_aniadir},
     { path: '/popUpMesa', component:PopUpMesa ,isPopup: true },
     { path: '/verpedido', component: verpedido},
-    { path: '/popUpEditarMesa', component:PopUpEditarMesa, isPopup: true}
+    { path: '/popUpEditarMesa', component:PopUpEditarMesa, isPopup: true},
+    { path: '/popUpAñadirMesa', component:PopUpAñadirMesa, isPopup:true}
 ];
 
 function init(){

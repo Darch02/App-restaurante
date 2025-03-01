@@ -9,6 +9,9 @@ async function editarMesas(navigateTo) {
         mesa.addEventListener('click', () => navigateTo('/popUpEditarMesa'));
     });
 
+    const añadir = container.querySelector(".icono-añadir");
+    añadir.addEventListener('click', () => navigateTo('/popUpAñadirMesa') );
+
     return container;
   }
   
