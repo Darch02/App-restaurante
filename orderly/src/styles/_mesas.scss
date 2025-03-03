@@ -78,26 +78,28 @@ select{
   margin-left: 75%;
 }
 
-  .ver-pedido {
-    position: fixed; 
-    justify-self: center;
-    bottom: 90px; 
-    left: 50%; 
-    transform: translateX(-50%);
-    background-color: #fca420; 
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 12px;
-    transition: transform 0.2s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000; // Asegura que esté encima de todo 
-  }
+.ver-pedido {
+  position: fixed; 
+  justify-self: center;
+  bottom: 90px; 
+  left: 50%; 
+  transform: translateX(-50%);
+  background-color: #fca420; 
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 12px;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000; // Asegura que esté encima de todo 
+}
 
-  .ver-pedido:active {
-    transform: translateX(-50%) scale(0.90);
+.ver-pedido:active {
+  transform: translateX(-50%) scale(0.90);
 
-  }
-
+}
+.mesa-ocupada{
+  background-color: $gris-oscuro; // cuando la mesa está ocupada
+}

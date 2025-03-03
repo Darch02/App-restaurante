@@ -8,26 +8,34 @@ async function Mesas(navigateTo) {
     // variable en la cual se guardaría toda la información de las mesas. esto despúes se debe guardar en local storage
     const mesas= [{
         nombre: 'Mesa 1',
-        Estado: 'activa',
-        sector: 'piso 1',
+        Estado: 'libre',
+        sector: 'Piso 1',
+        pedidos: []
+    },
+    {
+        nombre: 'Mesa 2',
+        Estado: 'ocupada',
+        sector: 'Piso 1',
         pedidos: [{
             alimentos:[],
             estado: 'activo'
         }]
     },
     {
-        nombre: 'Mesa 2',
-        Estado: 'activa',
-        sector: 'piso 2',
+        nombre: 'Mesa 3',
+        Estado: 'ocupada',
+        sector: 'Piso 2',
         pedidos: [{
             alimentos:[],
             estado: 'activo'
         }]
     }];
-    const ContenedorMesas = container.querySelector('#contenedor-mesas');
-    let ContenedorMesa;
 
+    localStorage.setItem("Mesas",JSON.stringify(mesas)); // se guarda en localstorage
+    const ContenedorMesas = container.querySelector('#contenedor-mesas');
    // pinta cada una de las mesas dentro de la variable mesas.
+   function pintarMesas(mesas) {
+    let ContenedorMesa;
     mesas.forEach(mesa => {
         ContenedorMesa= document.createElement('div');
         ContenedorMesa.innerHTML= `
@@ -35,22 +43,37 @@ async function Mesas(navigateTo) {
         <p>`+ mesa.nombre + `</p>
     `
         ContenedorMesa.classList.add("mesa");
+        if(mesa.Estado == 'ocupada'){
+            ContenedorMesa.classList.add('mesa-ocupada'); // si esta ocupada, cambia el estilo del contenedor
+            ContenedorMesa.addEventListener('click', () => navigateTo('/popUpMesa'));
+        }else{
+            ContenedorMesa.addEventListener('click', () => navigateTo('/menu_aniadir')); // la navegación del click debe cambiar segun el estado de la mesa
+        }
         ContenedorMesa.id = `mesa-${mesa}`;
-        ContenedorMesa.addEventListener('click', () => navigateTo('/menu_aniadir')); // la navegación del click debe cambiar segun el estado de la mesa
         ContenedorMesas.appendChild(ContenedorMesa);
     });
+   }
 
+   const stringMesas = localStorage.getItem('Mesas'); // se obtienen las mesas del localstorage
+   const Mesas =JSON.parse(stringMesas);
 
     // navegación a la página de editar
-    const edit= container.getElementsByClassName("icono-editar-grande")[0];
+    const edit= container.getElementsByClassName("editar")[0];
     edit.addEventListener('click',() => navigateTo('/editarMesas'));
 
+    const selector = container.getElementsByClassName("selector-sector")[0];
 
-    // const mesas = container.querySelectorAll(".mesa");
-    // mesas.forEach(mesa => {
-    //     mesa.addEventListener('click', () => navigateTo('/popUpMesa'));
-    // });
+    // muestra distintas mesas dependiendo del sector
+    selector.addEventListener("change", (event) => {
+        pintarSector(event.target.value)
+    });
 
+    let mesasSector;
+    // función para pintar las mesas dependiendo del sector
+    function pintarSector(seleccion){
+        mesasSector= Mesas.filter((mesa) => mesa.sector === seleccion);
+        pintarMesas(mesasSector);// falta que las mesas de la selección anterior se borren
+    };
     return container;
   }
   
