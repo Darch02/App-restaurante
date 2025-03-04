@@ -40,8 +40,8 @@ async function Mesas(navigateTo) {
         ContenedorMesa= document.createElement('div');
         ContenedorMesa.innerHTML= `
         <img class= "img-mesas" src="../src/assets/icono-mesa.svg" alt="imagen mesa"/>
-        <p>`+ mesa.nombre + `</p>
-    `
+        <p>`+ mesa.nombre + `</p>`;
+        
         ContenedorMesa.classList.add("mesa");
         if(mesa.Estado == 'ocupada'){
             ContenedorMesa.classList.add('mesa-ocupada'); // si esta ocupada, cambia el estilo del contenedor
@@ -72,8 +72,12 @@ async function Mesas(navigateTo) {
     // función para pintar las mesas dependiendo del sector
     function pintarSector(seleccion){
         mesasSector= Mesas.filter((mesa) => mesa.sector === seleccion);
+        ContenedorMesas.replaceChildren();
         pintarMesas(mesasSector);// falta que las mesas de la selección anterior se borren
     };
+    // inicialización:
+
+    pintarSector("Piso 1");
     return container;
   }
   
