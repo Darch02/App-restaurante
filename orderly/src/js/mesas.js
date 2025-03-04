@@ -6,7 +6,7 @@ async function Mesas(navigateTo) {
     container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
 
     // variable en la cual se guardaría toda la información de las mesas. esto despúes se debe guardar en local storage
-    const mesas= [{
+    /* const mesas= [{
         nombre: 'Mesa 1',
         Estado: 'libre',
         sector: 'Piso 1',
@@ -31,7 +31,11 @@ async function Mesas(navigateTo) {
         }]
     }];
 
-    localStorage.setItem("Mesas",JSON.stringify(mesas)); // se guarda en localstorage
+    localStorage.setItem("Mesas",JSON.stringify(mesas)); // se guarda en localstorage */
+
+    /* todo el codigo anterior comentado es en el que se guardan las variables iniclamente. como ya las guardé una vez en en local storage
+    no lo tengo que volver a hacer, ya que el almacenamieto es persistente*/
+    
     const ContenedorMesas = container.querySelector('#contenedor-mesas');
    // pinta cada una de las mesas dentro de la variable mesas.
    function pintarMesas(mesas) {
@@ -45,9 +49,15 @@ async function Mesas(navigateTo) {
         ContenedorMesa.classList.add("mesa");
         if(mesa.Estado == 'ocupada'){
             ContenedorMesa.classList.add('mesa-ocupada'); // si esta ocupada, cambia el estilo del contenedor
-            ContenedorMesa.addEventListener('click', () => navigateTo('/popUpMesa'));
+            ContenedorMesa.addEventListener('click', () => {
+                navigateTo('/popUpMesa');
+                localStorage.setItem('MesaSeleccionada', JSON.stringify(mesa)); // guarda la mesa seleccionada en en localstorage
+            }); 
         }else{
-            ContenedorMesa.addEventListener('click', () => navigateTo('/menu_aniadir')); // la navegación del click debe cambiar segun el estado de la mesa
+            ContenedorMesa.addEventListener('click', () => {
+                navigateTo('/menu_aniadir');
+                localStorage.setItem('MesaSeleccionada', JSON.stringify(mesa)); // guarda la mesa seleccionada en en localstorage
+            }); // la navegación del click debe cambiar segun el estado de la mesa
         }
         ContenedorMesa.id = `mesa-${mesa}`;
         ContenedorMesas.appendChild(ContenedorMesa);
@@ -73,7 +83,7 @@ async function Mesas(navigateTo) {
     function pintarSector(seleccion){
         mesasSector= Mesas.filter((mesa) => mesa.sector === seleccion);
         ContenedorMesas.replaceChildren();
-        pintarMesas(mesasSector);// falta que las mesas de la selección anterior se borren
+        pintarMesas(mesasSector);
     };
     // inicialización:
 
