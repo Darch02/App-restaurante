@@ -4,53 +4,29 @@ async function verpedido(navigateTo) {
   const container = document.createElement('div'); // Crear un contenedor temporal
   container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
 
-  const botonComandar = container.querySelector('#comandar');
-  botonComandar.addEventListener('click', Comandar);
-
-  const stringMesa = localStorage.getItem("MesaSeleccionada");
-  const mesa = JSON.parse(stringMesa);
+  // Seleccionar el elemento #precio dentro del container
+  const precioElemento = container.querySelector('#precio');
 
   // Obtener el pedido en proceso desde localStorage
   let pedido_en_proceso = JSON.parse(localStorage.getItem("pedido_en_proceso")) || [];
 
-  // Definir el pedido que se guardará en la mesa
-  const pedido = {
-      alimentos: pedido_en_proceso, // Agregamos los alimentos del pedido en proceso
-      estado: 'activo'
-  };
-
-  // Función para guardar el pedido en la mesa seleccionada
-  function Comandar() {
-      console.log("Se está guardando el pedido");
-
-      if (!mesa) {
-          console.error("No hay mesa seleccionada.");
+  // Función para calcular el total del pedido
+  function calcularTotal() {
+      if (!precioElemento) {
+          console.error("No se encontró el elemento #precio.");
           return;
       }
 
-      // Añadir pedido
-      mesa.pedidos.push(pedido);
-      mesa.Estado = "ocupada";
-      let mesas = JSON.parse(localStorage.getItem('Mesas')) || [];
+      let total = pedido_en_proceso.reduce((acc, item) => {
+          let precioNumerico = parseFloat(item.precio.replace('.', '').replace(',', '').replace('$', '')) || 0;
+          return acc + (precioNumerico * item.cantidad);
+      }, 0);
 
-      let index = mesas.findIndex(m => m.nombre === mesa.nombre);
-      if (index !== -1) {
-          console.log("Antes de actualizar:", mesas[index]); // Verifica antes
-          mesas[index] = mesa;
-          console.log("Después de actualizar:", mesas[index]); // Verifica después
-
-          localStorage.setItem('Mesas', JSON.stringify(mesas));
-          console.log("Se pudo guardar el pedido");
-
-          // Limpiar pedido en proceso después de comandar
-          localStorage.removeItem("pedido_en_proceso");
-
-          // Recargar la vista para actualizar
-          pintarVerPedido();
-      }
+      // Formatear como moneda y actualizar en el DOM
+      precioElemento.textContent = `Total: $${total.toLocaleString()}`;
   }
 
-  // Función para pintar el pedido en la pantalla
+  // Pintar los productos en la pantalla
   function pintarVerPedido() {
       const contenedorPedido = container.querySelector('#contenedor-pedido');
       contenedorPedido.innerHTML = ''; // Limpiar antes de renderizar
@@ -72,9 +48,21 @@ async function verpedido(navigateTo) {
 
           contenedorPedido.appendChild(divPedido);
       });
+
+      calcularTotal(); // Calcular total al pintar los productos
   }
 
-  // Llamar a la función para mostrar el pedido al cargar la página
+  // Botón "Comandar"
+  const botonComandar = container.querySelector('#comandar');
+  if (botonComandar) {
+      botonComandar.addEventListener('click', () => {
+          console.log("Pedido enviado");
+      });
+  } else {
+      console.error("No se encontró el botón #comandar.");
+  }
+
+  // Pintar el pedido en pantalla
   pintarVerPedido();
 
   return container;
