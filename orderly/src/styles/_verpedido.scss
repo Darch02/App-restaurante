@@ -2,6 +2,45 @@
 h1 {
     text-align: center;
     font-family: $tipografia;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+
+#contenedor-pedido {
+    background: #ffffff; // Fondo blanco
+    border-radius: 12px; // Bordes redondeados
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); // Sombra suave
+    padding: 20px; // Espaciado interno
+    max-width: 600px; // Ancho máximo
+    margin: 20px auto; // Centrar el contenedor
+    font-family: 'Arial', sans-serif; // Fuente moderna
+    overflow-y: auto; // Agregar scroll si hay muchos pedidos
+    max-height: 400px; // Altura máxima antes de hacer scroll
+}
+
+// Estilos para cada item del pedido
+.pedido-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa; // Fondo gris claro
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background: #e9ecef; // Cambio de color al pasar el mouse
+        transform: scale(1.02); // Pequeño efecto de zoom
+    }
+}
+
+// Estilos para el nombre del producto
+.pedido-item p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #333;
 }
 
 #comandar{
@@ -26,4 +65,18 @@ h1 {
         color:white;
         transform: scale(0.95) ;
     }
+}
+
+#precio {
+    font-family: $tipografia;
+    position: fixed; 
+    justify-self: center;
+    bottom: 110px; 
+    left: 10%; 
+    display: block;
+    font-size: 23px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
 }
