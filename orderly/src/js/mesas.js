@@ -34,7 +34,7 @@ async function Mesas(navigateTo) {
         }]
     }];
    
-    //localStorage.setItem("Mesas",JSON.stringify(mesas)); // se guarda en localstorage
+    localStorage.setItem("Mesas",JSON.stringify(mesas)); // se guarda en localstorage
 
     /* todo el codigo anterior comentado es en el que se guardan las variables iniclamente. como ya las guardé una vez en en local storage
     no lo tengo que volver a hacer, ya que el almacenamieto es persistente*/

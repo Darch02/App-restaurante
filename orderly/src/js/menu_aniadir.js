@@ -74,7 +74,7 @@ async function menu_aniadir(navigateTo) {
 
     // este es el botn para ver el pedido actual
     const verpedido = container.querySelector('.ver-pedido');
-    btnVerpedido.addEventListener('click', () => {
+    verpedido.addEventListener('click', () => {
       navigateTo('/Pedidos.html'); // se va a los pedidos
     });
 
