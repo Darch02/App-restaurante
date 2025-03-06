@@ -6,7 +6,7 @@ async function Mesas(navigateTo) {
     container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
 
     // variable en la cual se guardaría toda la información de las mesas. esto despúes se debe guardar en local storage
-    /* const mesas= [{
+     const mesas= [{
         nombre: 'Mesa 1',
         Estado: 'libre',
         sector: 'Piso 1',
@@ -14,19 +14,22 @@ async function Mesas(navigateTo) {
     },
     {
         nombre: 'Mesa 2',
-        Estado: 'ocupada',
+        Estado: 'libre',
         sector: 'Piso 1',
         pedidos: [{
-            alimentos:[],
+            alimentos:[{
+                alimento: '',
+                cantdad: '',
+            }],
             estado: 'activo'
         }]
     },
     {
         nombre: 'Mesa 3',
-        Estado: 'ocupada',
+        Estado: 'libre',
         sector: 'Piso 2',
         pedidos: [{
-            alimentos:[],
+            alimentos:[{}],
             estado: 'activo'
         }]
     }];
@@ -92,3 +95,5 @@ async function Mesas(navigateTo) {
   }
   
   export default Mesas;
+
+  
