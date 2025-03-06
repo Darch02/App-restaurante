@@ -30,6 +30,7 @@ async function menu_aniadir(navigateTo) {
   localStorage.setItem("menu_aniadir", JSON.stringify(menuAniadir));
 
   let contenedorMenuAniadir = container.querySelector('#contenedor-menu');
+  let botonesCategoria = container.querySelectorAll('.categoria');
 
   let pedido_en_proceso = JSON.parse(localStorage.getItem('pedido_en_proceso')) || [];
 
@@ -71,9 +72,20 @@ async function menu_aniadir(navigateTo) {
     });
 }
 
-  // obtiene el menú almacenado y pintarlo
-  const MenuString = localStorage.getItem("menu_aniadir");
-  pintarMenu(JSON.parse(MenuString));
+botonesCategoria.forEach(boton => {
+  boton.addEventListener('click', () => {
+      let categoriaSeleccionada = boton.textContent.trim();
+
+      if (categoriaSeleccionada === 'Todos') {
+          pintarMenu(menuAniadir); // Muestra todo el menú
+      } else {
+          let productosFiltrados = menuAniadir.filter(p => p.categoria === categoriaSeleccionada);
+          pintarMenu(productosFiltrados);
+      }
+  });
+});
+
+pintarMenu(menuAniadir);
 
   return container;
 }
