@@ -7,6 +7,8 @@ async function menu_aniadir(navigateTo) {
   const botonver = container.getElementsByClassName("ver-pedido")[0];
   botonver.addEventListener('click', () => { navigateTo('/verpedido'); });
 
+
+  // datos del menu aniadir
   const menuAniadir = [
       {
           nombreProducto: 'Jugo de uva',
@@ -24,14 +26,16 @@ async function menu_aniadir(navigateTo) {
       }
   ];
 
+
   localStorage.setItem("menu_aniadir", JSON.stringify(menuAniadir));
 
   let contenedorMenuAniadir = container.querySelector('#contenedor-menu');
 
   let pedido_en_proceso = JSON.parse(localStorage.getItem('pedido_en_proceso')) || [];
 
+  // funcion para pintar en el contenedor los datos y guardar en la variable los datos de alimento
   function pintarMenu(menuAniadir) {
-    contenedorMenuAniadir.innerHTML = ''; // Limpiar antes de renderizar
+    contenedorMenuAniadir.innerHTML = ''; 
 
     menuAniadir.forEach((item, index) => {
         let ContenedorItemMenuAniadir = document.createElement('div');
@@ -45,24 +49,21 @@ async function menu_aniadir(navigateTo) {
         `;
         ContenedorItemMenuAniadir.classList.add("menu_aniadir");
         
-        // Crear botón y agregar evento aquí
+        // crea el botón y agrega rl evento aquí
         let botonAgregar = ContenedorItemMenuAniadir.querySelector('.add');
         botonAgregar.addEventListener('click', () => {
             let producto = menuAniadir[index];
 
-            // Recuperar pedido en proceso de nuevo en caso de que haya cambios recientes
+            // recupera el pedido en proceso de nuevo en caso de que haya cambios recientes
             let pedidoActualizado = JSON.parse(localStorage.getItem('pedido_en_proceso')) || [];
 
-            // Buscar si el producto ya está en el pedido
+            // condicional para ver si el pedido ya existe y aumentar la cantidad o agregar el item
             let itemExistente = pedidoActualizado.find(p => p.nombreProducto === producto.nombreProducto);
             if (itemExistente) {
-                itemExistente.cantidad += 1; // Aumentar cantidad si ya está en el pedido
+                itemExistente.cantidad += 1;
             } else {
-                // Agregar nuevo producto con cantidad inicial 1
                 pedidoActualizado.push({ ...producto, cantidad: 1 });
             }
-
-            // Guardar en localStorage para persistencia
             localStorage.setItem('pedido_en_proceso', JSON.stringify(pedidoActualizado));
         });
 
@@ -70,7 +71,7 @@ async function menu_aniadir(navigateTo) {
     });
 }
 
-  // Obtener el menú almacenado y pintarlo
+  // obtiene el menú almacenado y pintarlo
   const MenuString = localStorage.getItem("menu_aniadir");
   pintarMenu(JSON.parse(MenuString));
 
