@@ -11,8 +11,8 @@ async function verpedido(navigateTo) {
     const mesa = JSON.parse(stringMesa)
     //const stringPedido = localStorage.getItem("PedidoEnCurso") La idea es guardar todos los items del pedido en una variable en localstorage
     const pedido = {
-      alimento: 'sopa',
-      estado: 'listo'
+      alimentos: [],
+      estado: 'activo'
     }
 
     function Comandar() {
