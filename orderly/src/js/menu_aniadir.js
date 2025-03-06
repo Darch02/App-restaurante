@@ -8,6 +8,47 @@ async function menu_aniadir(navigateTo) {
     botonver.addEventListener('click', () => { navigateTo('/verpedido'); });
 
 
+    const menuAniadir= [{
+      nombreProducto: 'Jugo de uva',
+      precio: '7.000',
+      categoria: 'Jugos',
+      descripcion: 'Jugo en agua de mora sin azucar',
+      imagen: './src/assets/imagen-mondongo.jpg',
+    },
+    {
+      nombreProducto: 'Tiramisu',
+      precio: '15.000',
+      categoria: 'Postres',
+      descripcion: 'Postre de chocolate',
+      imagen: './src/assets/imagen-mondongo.jpg',
+    }];
+
+
+    localStorage.setItem("menu_aniadir",JSON.stringify(menuAniadir));
+    let contenedorMenuAniadir = container.querySelector('#contenedor-menu');
+
+
+    function pintarMenu(menuAniadir) {
+      let ContenedorItemMenuAniadir;
+      menuAniadir.forEach(item => {
+          ContenedorItemMenuAniadir= document.createElement('div');
+          ContenedorItemMenuAniadir.innerHTML= `
+                <div class="producto">
+                <img src="`+ item.imagen +`" alt="Imagen-producto">
+                <h3 class="nombre-producto">`+ item.nombreProducto +`</h3>
+                <p class="precio-producto">`+'$'+ item.precio +`</p>
+                <button class="add">Añadir</button>
+                </div>
+          `;
+          ContenedorItemMenuAniadir.classList.add("menu_aniadir");
+          contenedorMenuAniadir.appendChild(ContenedorItemMenuAniadir);
+      });
+    }
+    
+    const MenuString = localStorage.getItem("menu_aniadir");
+    pintarMenu(JSON.parse(MenuString));
+
+
     //para obtener la mesa seleccionada del pedido a hacer
     let MesaSeleccionada = JSON.parse(localStorage.getItem('MesaSeleccionada'));
     let mesas = JSON.parse(localStorage.getItem('Mesas')) || [];
