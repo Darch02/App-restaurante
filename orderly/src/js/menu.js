@@ -27,6 +27,7 @@ async function Menu(navigateTo) {
 
   let contenedorMenu = container.querySelector('#contenedor-menu');
   let btnsCategoria = container.querySelectorAll('.categoria');
+  let inputBuscar = container.querySelector('#s');
 
   // Función para pintar productos en el menú
   function pintarMenu(productos) {
@@ -59,6 +60,15 @@ async function Menu(navigateTo) {
           }
       });
   });
+
+  // Función de búsqueda por nombre del producto
+  inputBuscar.addEventListener('input', () => {
+    let textoBusqueda = inputBuscar.value.trim().toLowerCase(); // Convertir texto a minúsculas
+    let productosFiltrados = menu.filter(p => 
+        p.nombreProducto.toLowerCase().includes(textoBusqueda)
+    );
+    pintarMenu(productosFiltrados);
+});
 
   // Obtener el menú almacenado y pintarlo
   const MenuString = localStorage.getItem("menu");
