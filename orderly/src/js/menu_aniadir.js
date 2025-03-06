@@ -31,6 +31,7 @@ async function menu_aniadir(navigateTo) {
 
   let contenedorMenuAniadir = container.querySelector('#contenedor-menu');
   let botonesCategoria = container.querySelectorAll('.categoria');
+  let inputBuscar = container.querySelector('#s');
 
   let pedido_en_proceso = JSON.parse(localStorage.getItem('pedido_en_proceso')) || [];
 
@@ -83,6 +84,14 @@ botonesCategoria.forEach(boton => {
           pintarMenu(productosFiltrados);
       }
   });
+});
+// Función de búsqueda por nombre del producto
+inputBuscar.addEventListener('input', () => {
+  let textoBusqueda = inputBuscar.value.trim().toLowerCase(); // Convertir texto a minúsculas
+  let productosFiltrados = menuAniadir.filter(p => 
+      p.nombreProducto.toLowerCase().includes(textoBusqueda)
+  );
+  pintarMenu(productosFiltrados);
 });
 
 pintarMenu(menuAniadir);
