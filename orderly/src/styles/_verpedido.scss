@@ -1,0 +1,29 @@
+@use 'variables' as *;
+h1 {
+    text-align: center;
+    font-family: $tipografia;
+}
+
+#comandar{
+    position: fixed; 
+    justify-self: center;
+    bottom: 110px; 
+    left: 77%; 
+    transform: translateX(-50%);
+    background-color: #fca420; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 12px;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; // Asegura que esté encima de todo 
+
+    &:active {
+        background-color: #a76706;
+        color:white;
+        transform: scale(0.95) ;
+    }
+}
