@@ -16,22 +16,13 @@ async function Mesas(navigateTo) {
         nombre: 'Mesa 2',
         Estado: 'libre',
         sector: 'Piso 1',
-        pedidos: [{
-            alimentos:[{
-                alimento: '',
-                cantdad: '',
-            }],
-            estado: 'activo'
-        }]
+        pedidos: []
     },
     {
         nombre: 'Mesa 3',
         Estado: 'libre',
         sector: 'Piso 2',
-        pedidos: [{
-            alimentos:[{}],
-            estado: 'activo'
-        }]
+        pedidos: []
     }];
    
     // localStorage.setItem("Mesas",JSON.stringify(mesas)); // se guarda en localstorage

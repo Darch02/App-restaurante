@@ -16,7 +16,7 @@ async function Pedidos(navigateTo) {
           <div>
             <p class="numero-mesa">`+mesa.nombre+`</p><p class="estado-pedido">`+pedido.estado+`</p>
           </div>
-          <p>total: $</p>
+          <p>total: $`+pedido.total.toLocaleString()+`</p>
           <button>terminar pedido</button>
       `;
         ContenedorPedido.classList.add("pedido");

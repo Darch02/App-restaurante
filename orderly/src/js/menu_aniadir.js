@@ -34,7 +34,12 @@ async function menu_aniadir(navigateTo) {
   let inputBuscar = container.querySelector('#s');
 
  // se inicializa vacío
-  localStorage.setItem("pedido_en_proceso","");
+  let pedido_en_proceso = {
+    alimentos: [],
+    estado: 'activo',
+    total: 0
+  };
+  localStorage.setItem("pedido_en_proceso",JSON.stringify(pedido_en_proceso));
 
   // funcion para pintar en el contenedor los datos y guardar en la variable los datos de alimento
   function pintarMenu(menuAniadir) {
@@ -58,14 +63,14 @@ async function menu_aniadir(navigateTo) {
             let producto = menuAniadir[index];
 
             // recupera el pedido en proceso de nuevo en caso de que haya cambios recientes
-            let pedidoActualizado = JSON.parse(localStorage.getItem('pedido_en_proceso')) || [];
+            let pedidoActualizado = JSON.parse(localStorage.getItem('pedido_en_proceso')) || {};
 
             // condicional para ver si el pedido ya existe y aumentar la cantidad o agregar el item
-            let itemExistente = pedidoActualizado.find(p => p.nombreProducto === producto.nombreProducto);
+            let itemExistente = pedidoActualizado.alimentos.find(p => p.nombreProducto === producto.nombreProducto);
             if (itemExistente) {
                 itemExistente.cantidad += 1;
             } else {
-                pedidoActualizado.push({ ...producto, cantidad: 1 });
+                pedidoActualizado.alimentos.push({ ...producto, cantidad: 1 });
             }
             localStorage.setItem('pedido_en_proceso', JSON.stringify(pedidoActualizado));
         });
@@ -73,7 +78,7 @@ async function menu_aniadir(navigateTo) {
         contenedorMenuAniadir.appendChild(ContenedorItemMenuAniadir);
     });
 }
-menuAniadir = JSON.parse(localStorage.getItem("Menu"));
+const menuAniadir = JSON.parse(localStorage.getItem("menu"));
 
 botonesCategoria.forEach(boton => {
   boton.addEventListener('click', () => {

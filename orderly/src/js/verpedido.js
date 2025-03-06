@@ -8,7 +8,8 @@ async function verpedido(navigateTo) {
   const precioElemento = container.querySelector('#precio');
 
   // Obtener el pedido en proceso desde localStorage
-  let pedido_en_proceso = JSON.parse(localStorage.getItem("pedido_en_proceso")) || [];
+  let pedido_en_proceso = JSON.parse(localStorage.getItem("pedido_en_proceso")) || {};
+  let total_pedido;
 
   // Función para calcular el total del pedido
   function calcularTotal() {
@@ -17,13 +18,15 @@ async function verpedido(navigateTo) {
           return;
       }
 
-      let total = pedido_en_proceso.reduce((acc, item) => {
+      let total = pedido_en_proceso.alimentos.reduce((acc, item) => {
           let precioNumerico = parseFloat(item.precio.replace('.', '').replace(',', '').replace('$', '')) || 0;
           return acc + (precioNumerico * item.cantidad);
       }, 0);
 
       // Formatear como moneda y actualizar en el DOM
       precioElemento.textContent = `Total: $${total.toLocaleString()}`;
+      total_pedido = total;
+      console.log(total_pedido);
   }
 
   // Pintar los productos en la pantalla
@@ -31,12 +34,12 @@ async function verpedido(navigateTo) {
       const contenedorPedido = container.querySelector('#contenedor-pedido');
       contenedorPedido.innerHTML = ''; // Limpiar antes de renderizar
 
-      if (pedido_en_proceso.length === 0) {
+      if (pedido_en_proceso.alimentos.length === 0) {
           contenedorPedido.innerHTML = "<p>No hay productos en el pedido.</p>";
           return;
       }
 
-      pedido_en_proceso.forEach(item => {
+      pedido_en_proceso.alimentos.forEach(item => {
           let divPedido = document.createElement('div');
           divPedido.classList.add("pedido-item");
 
@@ -56,18 +59,19 @@ async function verpedido(navigateTo) {
   const botonComandar = container.querySelector('#comandar');
   let mesa = JSON.parse(localStorage.getItem("MesaSeleccionada")) || [];
   if (botonComandar) {
-      botonComandar.addEventListener('click', Comandar(mesa));
+      botonComandar.addEventListener('click', () => Comandar(mesa));
   } else {
       console.error("No se encontró el botón #comandar.");
   }
+
   // función para comandar el pedido
   function Comandar(mesa) {
     if (!mesa) {
         console.error("No hay mesa seleccionada.");
         return;
     }
-
     // Añadir pedido
+    pedido_en_proceso.total= total_pedido;
     mesa.pedidos.push(pedido_en_proceso);
     mesa.Estado = "ocupada";
     let mesas = JSON.parse(localStorage.getItem('Mesas')) || [];
