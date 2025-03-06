@@ -9,7 +9,7 @@ async function menu_aniadir(navigateTo) {
 
 
   // datos del menu aniadir
-  const menuAniadir = [
+ /*  const menuAniadir = [
       {
           nombreProducto: 'Jugo de uva',
           precio: '7.000',
@@ -24,23 +24,24 @@ async function menu_aniadir(navigateTo) {
           descripcion: 'Postre de chocolate',
           imagen: './src/assets/imagen-mondongo.jpg',
       }
-  ];
+  ]; */
 
 
-  localStorage.setItem("menu_aniadir", JSON.stringify(menuAniadir));
+//   localStorage.setItem("menu_aniadir", JSON.stringify(menuAniadir));
 
   let contenedorMenuAniadir = container.querySelector('#contenedor-menu');
   let botonesCategoria = container.querySelectorAll('.categoria');
   let inputBuscar = container.querySelector('#s');
 
-  let pedido_en_proceso = JSON.parse(localStorage.getItem('pedido_en_proceso')) || [];
+ // se inicializa vacío
+  localStorage.setItem("pedido_en_proceso","");
 
   // funcion para pintar en el contenedor los datos y guardar en la variable los datos de alimento
   function pintarMenu(menuAniadir) {
     contenedorMenuAniadir.innerHTML = ''; 
-
+    let ContenedorItemMenuAniadir;
     menuAniadir.forEach((item, index) => {
-        let ContenedorItemMenuAniadir = document.createElement('div');
+        ContenedorItemMenuAniadir = document.createElement('div');
         ContenedorItemMenuAniadir.innerHTML = `
             <div class="producto">
                 <img src="${item.imagen}" alt="Imagen-producto">
@@ -72,16 +73,19 @@ async function menu_aniadir(navigateTo) {
         contenedorMenuAniadir.appendChild(ContenedorItemMenuAniadir);
     });
 }
+menuAniadir = JSON.parse(localStorage.getItem("Menu"));
 
 botonesCategoria.forEach(boton => {
   boton.addEventListener('click', () => {
       let categoriaSeleccionada = boton.textContent.trim();
 
       if (categoriaSeleccionada === 'Todos') {
-          pintarMenu(menuAniadir); // Muestra todo el menú
+            contenedorMenuAniadir.replaceChildren();
+            pintarMenu(menuAniadir); // Muestra todo el menú
       } else {
-          let productosFiltrados = menuAniadir.filter(p => p.categoria === categoriaSeleccionada);
-          pintarMenu(productosFiltrados);
+            let productosFiltrados = menuAniadir.filter(p => p.categoria === categoriaSeleccionada);
+            contenedorMenuAniadir.replaceChildren();
+            pintarMenu(productosFiltrados);
       }
   });
 });
@@ -91,6 +95,7 @@ inputBuscar.addEventListener('input', () => {
   let productosFiltrados = menuAniadir.filter(p => 
       p.nombreProducto.toLowerCase().includes(textoBusqueda)
   );
+  contenedorMenuAniadir.replaceChildren();
   pintarMenu(productosFiltrados);
 });
 

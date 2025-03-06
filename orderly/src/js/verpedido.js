@@ -54,12 +54,30 @@ async function verpedido(navigateTo) {
 
   // Botón "Comandar"
   const botonComandar = container.querySelector('#comandar');
+  let mesa = JSON.parse(localStorage.getItem("MesaSeleccionada")) || [];
   if (botonComandar) {
-      botonComandar.addEventListener('click', () => {
-          console.log("Pedido enviado");
-      });
+      botonComandar.addEventListener('click', Comandar(mesa));
   } else {
       console.error("No se encontró el botón #comandar.");
+  }
+  // función para comandar el pedido
+  function Comandar(mesa) {
+    if (!mesa) {
+        console.error("No hay mesa seleccionada.");
+        return;
+    }
+
+    // Añadir pedido
+    mesa.pedidos.push(pedido_en_proceso);
+    mesa.Estado = "ocupada";
+    let mesas = JSON.parse(localStorage.getItem('Mesas')) || [];
+
+    let index = mesas.findIndex(m => m.nombre === mesa.nombre);
+    if (index !== -1) {
+        mesas[index] = mesa;
+        localStorage.setItem('Mesas', JSON.stringify(mesas));
+        console.log("se pudo guardar el pedido");
+    }
   }
 
   // Pintar el pedido en pantalla
