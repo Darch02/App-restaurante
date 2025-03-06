@@ -53,11 +53,9 @@ async function Menu(navigateTo) {
           let categoriaSeleccionada = boton.textContent.trim();
 
           if (categoriaSeleccionada === 'Todos') {
-                contenedorMenu.replaceChildren();
                 pintarMenu(menu); // Muestra todo el menú
           } else {
                 let productosFiltrados = menu.filter(p => p.categoria === categoriaSeleccionada);
-                contenedorMenu.replaceChildren();
                 pintarMenu(productosFiltrados);
           }
       });
@@ -69,7 +67,6 @@ async function Menu(navigateTo) {
     let productosFiltrados = menu.filter(p => 
         p.nombreProducto.toLowerCase().includes(textoBusqueda)
     );
-    contenedorMenu.replaceChildren();
     pintarMenu(productosFiltrados);
 });
 

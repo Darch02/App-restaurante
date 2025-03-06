@@ -80,11 +80,9 @@ botonesCategoria.forEach(boton => {
       let categoriaSeleccionada = boton.textContent.trim();
 
       if (categoriaSeleccionada === 'Todos') {
-            contenedorMenuAniadir.replaceChildren();
             pintarMenu(menuAniadir); // Muestra todo el menú
       } else {
             let productosFiltrados = menuAniadir.filter(p => p.categoria === categoriaSeleccionada);
-            contenedorMenuAniadir.replaceChildren();
             pintarMenu(productosFiltrados);
       }
   });
@@ -95,7 +93,6 @@ inputBuscar.addEventListener('input', () => {
   let productosFiltrados = menuAniadir.filter(p => 
       p.nombreProducto.toLowerCase().includes(textoBusqueda)
   );
-  contenedorMenuAniadir.replaceChildren();
   pintarMenu(productosFiltrados);
 });
 
