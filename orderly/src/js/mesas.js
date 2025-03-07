@@ -70,7 +70,7 @@ async function Mesas(navigateTo) {
    }
 
    const stringMesas = localStorage.getItem('Mesas'); // se obtienen las mesas del localstorage
-   const Mesas =JSON.parse(stringMesas);
+   const Mesas =JSON.parse(stringMesas) || [];
 
     // navegación a la página de editar
     const edit= container.getElementsByClassName("añadir")[0];
@@ -91,8 +91,11 @@ async function Mesas(navigateTo) {
         pintarMesas(mesasSector);
     };
     // inicialización:
-
-    pintarSector("Piso 1");
+    if( Mesas.length === 0){
+        ContenedorMesas.innerHTML='No hay mesas agregadas';
+    }else{
+        pintarSector("Piso 1");
+    }
     return container;
   }
   
