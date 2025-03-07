@@ -22,11 +22,11 @@ async function Pedidos(navigateTo) {
             </div>
             <p><strong>Id: </strong>`+index+`<p>
             <p>total: $`+ pedido.total.toLocaleString()+`</p>
-            <button>terminar pedido</button>
+            <button class="terminar-pedido">terminar pedido</button>
             `;
             ContenedorPedido.classList.add("pedido");
             ContenedorPedido.addEventListener('click', () => {
-              localStorage.setItem('PedidoSeleccionado',pedido)
+              localStorage.setItem('PedidoSeleccionado',JSON.stringify(pedido));
               navigateTo('/popUpPedido');
             });
             const btnTerminar = ContenedorPedido.getElementsByTagName('button')[0];

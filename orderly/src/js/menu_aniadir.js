@@ -9,7 +9,7 @@ async function Menu_aniadir(navigateTo) {
 
 
   // datos del menu aniadir
- /*  const menuAniadir = [
+   const menu_Aniadir = [
       {
           nombreProducto: 'Jugo de uva',
           precio: '7.000',
@@ -24,10 +24,10 @@ async function Menu_aniadir(navigateTo) {
           descripcion: 'Postre de chocolate',
           imagen: './src/assets/imagen-mondongo.jpg',
       }
-  ]; */
+  ]; 
 
 
-//   localStorage.setItem("menu_aniadir", JSON.stringify(menuAniadir));
+//   localStorage.setItem("menu_aniadir", JSON.stringify(menu_Aniadir));
 
   let contenedorMenuAniadir = container.querySelector('#contenedor-menu');
   let botonesCategoria = container.querySelectorAll('.categoria');

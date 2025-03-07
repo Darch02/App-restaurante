@@ -4,7 +4,7 @@ async function PopUpPedido(navigateTo) {
     const container = document.createElement('div'); // Crear un contenedor temporal
     container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
 
-
+    const pedido = JSON.parse(localStorage.getItem('PedidoSeleccionado'))
     const precioElemento = container.querySelector('#precio');
 
     function calcularTotal() {
@@ -13,28 +13,26 @@ async function PopUpPedido(navigateTo) {
             return;
         }
   
-        let total = pedido_en_proceso.alimentos.reduce((acc, item) => {
+        let total = pedido.alimentos.reduce((acc, item) => {
             let precioNumerico = parseFloat(item.precio.replace('.', '').replace(',', '').replace('$', '')) || 0;
             return acc + (precioNumerico * item.cantidad);
         }, 0);
   
         // Formatear como moneda y actualizar en el DOM
         precioElemento.textContent = `Total: $${total.toLocaleString()}`;
-        total_pedido = total;
-        console.log(total_pedido);
     }
   
     // Pintar los productos en la pantalla
-    function pintarVerPedido() {
+    function pintarVerPedido(pedido) {
         const contenedorPedido = container.getElementsByClassName('contenedor-pedido')[0];
         contenedorPedido.innerHTML = ''; // Limpiar antes de renderizar
   
-        if (pedido_en_proceso.alimentos.length === 0) {
+        if (pedido.alimentos.length === 0) {
             contenedorPedido.innerHTML = "<p>No hay productos en el pedido.</p>";
             return;
         }
   
-        pedido_en_proceso.alimentos.forEach(item => {
+        pedido.alimentos.forEach(item => {
             let divPedido = document.createElement('div');
             divPedido.classList.add("pedido-item");
   
@@ -49,6 +47,22 @@ async function PopUpPedido(navigateTo) {
   
         calcularTotal(); // Calcular total al pintar los productos
     }
+
+    const stringMesas = localStorage.getItem('Mesas') || []; // se obtienen las mesas del localstorage
+    const Mesas =JSON.parse(stringMesas);
+
+    function terminarPedido(pedido,mesa){
+      let index = Mesas.findIndex(m => m.nombre === mesa.nombre);
+      if (index !== -1) {
+          let indexPedido = Mesas[index].pedidos.findIndex(p => p === pedido) ;
+          Mesas[index].pedidos[indexPedido].estado = 'terminado';
+          console.log(Mesas[index]);
+          localStorage.setItem('Mesas', JSON.stringify(Mesas));
+          console.log("se pudo guardar el pedido");
+        }
+    }
+
+    pintarVerPedido(pedido);
     return container;
 }
 export default PopUpPedido;
