@@ -62,16 +62,19 @@
 }
 
 .boton-activo , .boton-terminado{
-    border-radius: 10px;
+    border-radius: 15px;
+    font-size: 18px;
     color: black;
     border-width: 1px;
-    border-color: black;
+    border-color: rgb(39, 37, 37);
     background-color: white;
-    padding: 2px;
-    padding-inline: 5px
+    margin-top: 15px;
+    padding-inline: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 .estado-seleccionado{
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     color: white
 }
