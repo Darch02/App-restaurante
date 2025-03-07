@@ -1,9 +1,11 @@
-
 async function Pedidos(navigateTo) {
     const response = await fetch('/Pedidos.html'); // Carga el HTML externo
     const htmlText = await response.text(); // Convierte la respuesta en texto HTML
     const container = document.createElement('div'); // Crear un contenedor temporal
     container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
+
+
+    //pedido.total.toLocaleString()
 
     const ContenedorPedidos = container.querySelector('#contenedor-pedidos');
     // pinta cada uno de los pedidos de las mesas.
@@ -19,10 +21,14 @@ async function Pedidos(navigateTo) {
               <p class="numero-mesa">`+mesa.nombre+`</p><p class="estado-pedido">`+pedido.estado+`</p>
             </div>
             <p><strong>Id: </strong>`+index+`<p>
-            <p>total: $`+pedido.total.toLocaleString()+`</p>
+            <p>total: $`+ pedido.total.toLocaleString()+`</p>
             <button>terminar pedido</button>
             `;
             ContenedorPedido.classList.add("pedido");
+            ContenedorPedido.addEventListener('click', () => {
+              localStorage.setItem('PedidoSeleccionado',pedido)
+              navigateTo('/popUpPedido');
+            });
             const btnTerminar = ContenedorPedido.getElementsByTagName('button')[0];
             btnTerminar.addEventListener('click', () => terminarPedido(pedido,mesa));
             ContenedorPedidos.appendChild(ContenedorPedido);

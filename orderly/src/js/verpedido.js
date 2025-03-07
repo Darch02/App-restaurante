@@ -31,7 +31,7 @@ async function verpedido(navigateTo) {
 
   // Pintar los productos en la pantalla
   function pintarVerPedido() {
-      const contenedorPedido = container.querySelector('#contenedor-pedido');
+      const contenedorPedido = container.getElementsByClassName('contenedor-pedido')[0];
       contenedorPedido.innerHTML = ''; // Limpiar antes de renderizar
 
       if (pedido_en_proceso.alimentos.length === 0) {

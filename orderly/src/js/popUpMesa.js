@@ -21,7 +21,17 @@ async function PopUpMesa(navigateTo) {
             document.body.removeChild(container.parentElement);
         }
         navigateTo('/menu_aniadir');
-    })
+    });
+
+    const btnFinalizarServicio = container.querySelector('#finalizar-servicio');
+    btnFinalizarServicio.addEventListener('click', () => {
+        if (container.parentElement) {
+            document.body.removeChild(container.parentElement);
+        }
+        navigateTo('/factura');
+    });
+
+
     return container;
 }
 export default PopUpMesa;

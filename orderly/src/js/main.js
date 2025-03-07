@@ -8,6 +8,8 @@ import verpedido from "./verpedido";
 import PopUpDescrMenu from "./popUpDescrMenu";
 import PopUpEditarMesa from "./popUpEditarMesa";
 import PopUpAñadirMesa from "./popUpAñadirMesa";
+import Factura from "./factura";
+import PopUpPedido from "./popUpPedido";
 
 
 window.onload = init;
@@ -23,6 +25,8 @@ const routes = [
     { path: '/popUpEditarMesa', component:PopUpEditarMesa, isPopup: true},
     { path: '/popUpAñadirMesa', component:PopUpAñadirMesa, isPopup:true},
     { path: '/popUpDescrMenu', component:PopUpDescrMenu, isPopup:true},
+    { path: '/factura', component:Factura },
+    { path: '/popUpPedido', component: PopUpPedido, isPopup:true}
 ];
 
 function init(){
