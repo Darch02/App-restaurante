@@ -8,25 +8,6 @@ async function Menu_aniadir(navigateTo) {
   botonver.addEventListener('click', () => { navigateTo('/verpedido'); });
 
 
-  // datos del menu aniadir
-   const menu_Aniadir = [
-      {
-          nombreProducto: 'Jugo de uva',
-          precio: '7.000',
-          categoria: 'Jugos',
-          descripcion: 'Jugo en agua de mora sin azúcar',
-          imagen: './src/assets/imagen-mondongo.jpg',
-      },
-      {
-          nombreProducto: 'Tiramisu',
-          precio: '15.000',
-          categoria: 'Postres',
-          descripcion: 'Postre de chocolate',
-          imagen: './src/assets/imagen-mondongo.jpg',
-      }
-  ]; 
-
-
 //   localStorage.setItem("menu_aniadir", JSON.stringify(menu_Aniadir));
 
   let contenedorMenuAniadir = container.querySelector('#contenedor-menu');

@@ -6,20 +6,105 @@ async function Menu(navigateTo) {
 
   // Definir los productos del menú
   const menu = [
-      {
-          nombreProducto: 'Jugo de mora',
-          precio: '7.000',
-          categoria: 'Jugos',
-          descripcion: 'Jugo en agua de mora sin azúcar',
-          imagen: './src/assets/imagen-mondongo.jpg',
-      },
-      {
-          nombreProducto: 'Tiramisu',
-          precio: '15.000',
-          categoria: 'Postres',
-          descripcion: 'Postre de chocolate',
-          imagen: './src/assets/imagen-mondongo.jpg',
-      }
+    {
+        nombreProducto: 'Jugo de mora',
+        precio: '7.000',
+        categoria: 'Jugos',
+        descripcion: 'Jugo en agua de mora sin azúcar',
+        imagen: './src/assets/jugo-de-mora.png',
+    },
+    {
+        nombreProducto: 'Cazuela de frijoles',
+        precio: '22.000',
+        categoria: 'Sopas',
+        descripcion: 'Deliciosa sopa de frijoles con ripio de papa, maiz, chicharron y adiciones al gusto',
+        imagen: './src/assets/cazuela-de-frijoles.jpg',
+    },
+    {
+        nombreProducto: 'Asado de pollo',
+        precio: '30.000',
+        categoria: 'Carnes',
+        descripcion: 'Asado 300gr de pollo acompañado de ensalada, papas a la francesa y arepa de queso',
+        imagen: './src/assets/asado-de-pollo.png',
+    },
+    {
+        nombreProducto: 'Almuerzo del dia',
+        precio: '18.000',
+        categoria: 'Almuerzo',
+        descripcion: 'Acompañado de la sopa y el jugo del día',
+        imagen: './src/assets/almuerzo-del-dia.jpg',
+    },
+    {
+        nombreProducto: 'Desayuno del dia',
+        precio: '18.000',
+        categoria: 'Desayuno',
+        descripcion: 'Acompañado de chocolate o cafe y huevos al gusto',
+        imagen: './src/assets/desayuno-del-dia.jpg',
+    },
+    {
+        nombreProducto: 'Pasta a la bolognesa',
+        precio: '15.000',
+        categoria: 'Pasta',
+        descripcion: 'Postre de chocolate',
+        imagen: './src/assets/pasta-bolognesa.jpg',
+    },
+    {
+        nombreProducto: 'Sopa de lentejas',
+        precio: '15.000',
+        categoria: 'Sopas',
+        descripcion: 'Deliciosa sopa de lentejas, acompañado de arroz y aguacate',
+        imagen: './src/assets/sopa-de-lentejas.jpg',
+    },
+    {
+        nombreProducto: 'Sopa de pasta',
+        precio: '15.000',
+        categoria: 'Sopas',
+        descripcion: 'Deliciosa sopa de pastas, acompañado de arroz y aguacate',
+        imagen: './src/assets/sopa-de-pasta.jpg',
+    },
+    {
+        nombreProducto: 'Pasta con champiñones',
+        precio: '28.000',
+        categoria: 'Pasta',
+        descripcion: 'Pasta con salsa de la casa y champiñones, acompañado de queso parmesano',
+        imagen: './src/assets/pasta-con-champinones.jpg',
+    },
+    {
+        nombreProducto: 'Jugo de mango',
+        precio: '7.000',
+        categoria: 'Jugos',
+        descripcion: 'Jugo de mango en agua sin azúcar',
+        imagen: './src/assets/jugo-de-mango.png',
+    },
+    {
+        nombreProducto: 'Jugo de maracuya',
+        precio: '7.000',
+        categoria: 'Jugos',
+        descripcion: 'Jugo de maracuyá en agua sin azúcar',
+        imagen: './src/assets/jugo-de-maracuya.jpg',
+    },
+    {
+        nombreProducto: 'Asado de cerdo',
+        precio: '32.000',
+        categoria: 'Carnes',
+        descripcion: 'Asado de cerdo 300gr acompañado de papas a la francesa, ensalada y arepa de queso',
+        imagen: './src/assets/asado-de-cerdo.jpg',
+    },
+    {
+        nombreProducto: 'Sopa de verduras',
+        precio: '15.000',
+        categoria: 'Sopas',
+        descripcion: 'Sopa de verduras acompañado de arroz y aguacate',
+        imagen: './src/assets/sopa-de-verduras.jpg',
+    },
+    {
+        nombreProducto: 'Tiramisú',
+        precio: '15.000',
+        categoria: 'Postres',
+        descripcion: 'Rico postre de chocolate y tres leches',
+        imagen: './src/assets/tiramusi.jpg',
+    },
+
   ];
 
   // Guardar el menú en localStorage

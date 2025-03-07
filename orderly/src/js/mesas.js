@@ -23,7 +23,14 @@ async function Mesas(navigateTo) {
         Estado: 'libre',
         sector: 'Piso 2',
         pedidos: []
+    },
+    {
+        nombre: 'Mesa 4',
+        Estado: 'libre',
+        sector: 'Piso 2',
+        pedidos: []
     }];
+
     let pedido_en_proceso = {
         alimentos: [],
         estado: 'activo',
