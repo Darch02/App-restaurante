@@ -5,7 +5,7 @@ async function PopUpPedido(navigateTo) {
     container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
 
     const pedido = JSON.parse(localStorage.getItem('PedidoSeleccionado'))
-    const precioElemento = container.querySelector('#precio');
+    const precioElemento = container.querySelector('#precio-popup');
 
     function calcularTotal() {
         if (!precioElemento) {

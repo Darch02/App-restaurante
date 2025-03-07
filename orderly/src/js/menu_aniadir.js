@@ -31,7 +31,8 @@ async function Menu_aniadir(navigateTo) {
         
         // crea el botón y agrega rl evento aquí
         let botonAgregar = ContenedorItemMenuAniadir.querySelector('.add');
-        botonAgregar.addEventListener('click', () => {
+        botonAgregar.addEventListener('click', (event) => {
+          event.stopPropagation();
             let producto = menuAniadir[index];
 
             // recupera el pedido en proceso de nuevo en caso de que haya cambios recientes

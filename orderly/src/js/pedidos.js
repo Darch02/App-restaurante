@@ -22,15 +22,20 @@ async function Pedidos(navigateTo) {
             </div>
             <p><strong>Id: </strong>`+index+`<p>
             <p>total: $`+ pedido.total.toLocaleString()+`</p>
-            <button class="terminar-pedido">terminar pedido</button>
+            ${pedido.estado !== 'terminado' ? '<button class="terminar-pedido">Terminar pedido</button>' : ''}
             `;
             ContenedorPedido.classList.add("pedido");
             ContenedorPedido.addEventListener('click', () => {
               localStorage.setItem('PedidoSeleccionado',JSON.stringify(pedido));
               navigateTo('/popUpPedido');
             });
-            const btnTerminar = ContenedorPedido.getElementsByTagName('button')[0];
-            btnTerminar.addEventListener('click', () => terminarPedido(pedido,mesa));
+            if (pedido.estado !== 'terminado') {
+              const btnTerminar = ContenedorPedido.getElementsByTagName('button')[0];
+              btnTerminar.addEventListener('click', (event) => {
+                  event.stopPropagation();
+                  terminarPedido(pedido, mesa);
+              });
+          }
             ContenedorPedidos.appendChild(ContenedorPedido);
           }
         })
