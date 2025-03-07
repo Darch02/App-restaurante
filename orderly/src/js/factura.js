@@ -9,7 +9,7 @@ async function Factura(navigateTo) {
 
     const nombreMesa = container.querySelector('#nombre-mesa');
     nombreMesa.innerHTML= mesaSeleccionada.nombre
-    const ContenedorPedidos = container.querySelector('#contenedor-pedidos');
+    const ContenedorPedidos = container.querySelector('#contenedor-pedidos-mesa');
 
     const contTotal = container.querySelector('#total');
     
@@ -29,7 +29,7 @@ async function Factura(navigateTo) {
         mesa.pedidos.forEach((pedido,index) => {
             ContenedorPedido= document.createElement('div');
             ContenedorPedido.innerHTML= `
-            <div>
+            <div class='pedido-mesa'>
                 <h3>Id pedido : `+index+`</h3>
                 <h3>Alimentos</h3>
                 <div class='alimentos'>
@@ -41,10 +41,12 @@ async function Factura(navigateTo) {
             let alimento;
             pedido.alimentos.forEach(item =>{
                 alimento= document.createElement('div')
+                alimento.classList.add('pedido-item');
                 alimento.innerHTML=`
-                <p>`+item.nombreProducto+`</p><p>`+item.precio+`</p>
-                <p>`+item.cantidad+`</p>
-                `
+                <p><strong>Producto:</strong> ${item.nombreProducto}</p>
+                <p><strong>Precio:</strong> $${item.precio}</p>
+                <p><strong>Cantidad:</strong> ${item.cantidad}</p>
+                `;
                 listaAlimentos.appendChild(alimento);
             })
 
