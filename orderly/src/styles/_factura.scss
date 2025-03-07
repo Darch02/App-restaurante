@@ -31,10 +31,8 @@ h2-factura {
 /* Contenedor de pedidos */
 #contenedor-pedidos {
     margin-top: 20px;
-
     background: #ffffff;
     border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
 }
 
@@ -77,7 +75,7 @@ button-factura {
     cursor: pointer;
     transition: background 0.1s ease-in-out;
     margin: 20px auto;
-    width: 45%;
+    width: 50%;
 }
 
 button-factura:hover {
