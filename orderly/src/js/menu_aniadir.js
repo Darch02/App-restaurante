@@ -33,14 +33,6 @@ async function menu_aniadir(navigateTo) {
   let botonesCategoria = container.querySelectorAll('.categoria');
   let inputBuscar = container.querySelector('#s');
 
- // se inicializa vacío
-  let pedido_en_proceso = {
-    alimentos: [],
-    estado: 'activo',
-    total: 0
-  };
-  localStorage.setItem("pedido_en_proceso",JSON.stringify(pedido_en_proceso));
-
   // funcion para pintar en el contenedor los datos y guardar en la variable los datos de alimento
   function pintarMenu(menuAniadir) {
     contenedorMenuAniadir.innerHTML = ''; 

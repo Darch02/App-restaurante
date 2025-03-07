@@ -24,7 +24,11 @@ async function Mesas(navigateTo) {
         sector: 'Piso 2',
         pedidos: []
     }];
-   
+    let pedido_en_proceso = {
+        alimentos: [],
+        estado: 'activo',
+        total: 0
+      };
     // localStorage.setItem("Mesas",JSON.stringify(mesas)); // se guarda en localstorage
 
     /* todo el codigo anterior comentado es en el que se guardan las variables iniclamente. como ya las guardé una vez en en local storage
@@ -47,12 +51,15 @@ async function Mesas(navigateTo) {
             ContenedorMesa.addEventListener('click', () => {
                 navigateTo('/popUpMesa');
                 localStorage.setItem('MesaSeleccionada', JSON.stringify(mesa)); // guarda la mesa seleccionada en en localstorage
+                localStorage.setItem("pedido_en_proceso",JSON.stringify(pedido_en_proceso)); // el pedido en curso se pone vacio
             }); 
         }else{
+            ContenedorMesa.classList.remove('mesa-ocupada');
             ContenedorMesa.addEventListener('click', () => {
                 navigateTo('/menu_aniadir');
                 localStorage.setItem('MesaSeleccionada', JSON.stringify(mesa)); // guarda la mesa seleccionada en en localstorage
-            }); // la navegación del click debe cambiar segun el estado de la mesa
+                localStorage.setItem("pedido_en_proceso",JSON.stringify(pedido_en_proceso)); // el pedido en curso se pone vacio
+            }); 
         }
         ContenedorMesa.id = `mesa-${mesa}`;
         ContenedorMesas.appendChild(ContenedorMesa);
