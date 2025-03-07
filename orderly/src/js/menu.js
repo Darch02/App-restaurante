@@ -42,8 +42,15 @@ async function Menu(navigateTo) {
                   <p class="precio-producto">$${item.precio}</p>
               </div>
           `;
+
+          ContenedorItemMenu.addEventListener('click', () => {
+            navigateTo('/popUpDescrMenu');
+        }); 
+
           ContenedorItemMenu.classList.add("menu");
           contenedorMenu.appendChild(ContenedorItemMenu);
+
+          
       });
   }
 

@@ -1,4 +1,4 @@
-async function menu_aniadir(navigateTo) {
+async function Menu_aniadir(navigateTo) {
   const response = await fetch('/Menu_aniadir.html'); // Carga el HTML externo
   const htmlText = await response.text(); // Convierte la respuesta en texto HTML
   const container = document.createElement('div'); // Crear un contenedor temporal
@@ -98,4 +98,4 @@ pintarMenu(menuAniadir);
   return container;
 }
 
-export default menu_aniadir;
+export default Menu_aniadir;

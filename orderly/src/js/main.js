@@ -2,11 +2,13 @@ import Mesas from "./mesas";
 import Pedidos from "./pedidos";
 import Menu from "./menu";
 import editarMesas from "./editarMesas";
-import menu_aniadir from "./menu_aniadir";
+import Menu_aniadir from "./menu_aniadir";
 import PopUpMesa from "./popUpMesa";
 import verpedido from "./verpedido";
+import PopUpDescrMenu from "./popUpDescrMenu";
 import PopUpEditarMesa from "./popUpEditarMesa";
 import PopUpAñadirMesa from "./popUpAñadirMesa";
+
 
 window.onload = init;
 let root ;
@@ -15,11 +17,12 @@ const routes = [
     { path: '/pedidos', component: Pedidos },
     { path: '/menu', component: Menu},
     { path: '/editarMesas', component: editarMesas},
-    { path: '/menu_aniadir', component: menu_aniadir},
+    { path: '/menu_aniadir', component: Menu_aniadir},
     { path: '/popUpMesa', component:PopUpMesa ,isPopup: true },
     { path: '/verpedido', component: verpedido},
     { path: '/popUpEditarMesa', component:PopUpEditarMesa, isPopup: true},
-    { path: '/popUpAñadirMesa', component:PopUpAñadirMesa, isPopup:true}
+    { path: '/popUpAñadirMesa', component:PopUpAñadirMesa, isPopup:true},
+    { path: '/popUpDescrMenu', component:PopUpDescrMenu, isPopup:true},
 ];
 
 function init(){
