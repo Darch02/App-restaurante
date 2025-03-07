@@ -53,21 +53,17 @@ async function Mesas(navigateTo) {
         `;
         
         ContenedorMesa.classList.add("mesa");
+
         if(mesa.Estado == 'ocupada'){
             ContenedorMesa.classList.add('mesa-ocupada'); // si esta ocupada, cambia el estilo del contenedor
-            ContenedorMesa.addEventListener('click', () => {
-                navigateTo('/popUpMesa');
-                localStorage.setItem('MesaSeleccionada', JSON.stringify(mesa)); // guarda la mesa seleccionada en en localstorage
-                localStorage.setItem("pedido_en_proceso",JSON.stringify(pedido_en_proceso)); // el pedido en curso se pone vacio
-            }); 
         }else{
             ContenedorMesa.classList.remove('mesa-ocupada');
-            ContenedorMesa.addEventListener('click', () => {
-                navigateTo('/menu_aniadir');
-                localStorage.setItem('MesaSeleccionada', JSON.stringify(mesa)); // guarda la mesa seleccionada en en localstorage
-                localStorage.setItem("pedido_en_proceso",JSON.stringify(pedido_en_proceso)); // el pedido en curso se pone vacio
-            }); 
         }
+        ContenedorMesa.addEventListener('click', () => {
+            navigateTo('/popUpMesa');
+            localStorage.setItem('MesaSeleccionada', JSON.stringify(mesa)); // guarda la mesa seleccionada en en localstorage
+            localStorage.setItem("pedido_en_proceso",JSON.stringify(pedido_en_proceso)); // el pedido en curso se pone vacio
+        }); 
         ContenedorMesa.id = `mesa-${mesa}`;
         ContenedorMesas.appendChild(ContenedorMesa);
     });

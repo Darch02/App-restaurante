@@ -10,7 +10,8 @@ async function PopUpMesa(navigateTo) {
     // });
 
     // se pinta el numero de la mesa
-    const MesaActual = JSON.parse(localStorage.getItem('MesaSeleccionada'));
+    const MesaActual = JSON.parse(localStorage.getItem('MesaSeleccionada')) || {};
+    const Mesas = JSON.parse(localStorage.getItem('Mesas')) || [];
     const tituloMesa = container.getElementsByTagName('h1')[0];
     tituloMesa.innerHTML= MesaActual.nombre;
 
@@ -31,6 +32,19 @@ async function PopUpMesa(navigateTo) {
         navigateTo('/factura');
     });
 
+    const btnEliminarMesa = container.querySelector('#eliminar-mesa')
+    btnEliminarMesa.addEventListener('click', ()=>{
+        let index = Mesas.findIndex(m => m.nombre === MesaActual.nombre);
+        if (index !== -1) {
+            Mesas.splice(index,1);
+            localStorage.setItem('Mesas', JSON.stringify(Mesas));
+            alert('la mesa se ha eliminado correctamente');
+            if (container.parentElement) {
+                document.body.removeChild(container.parentElement);
+            }
+            navigateTo('/mesas')
+        }
+    });
 
     return container;
 }
