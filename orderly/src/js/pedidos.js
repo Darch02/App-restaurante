@@ -23,6 +23,10 @@ async function Pedidos(navigateTo) {
             <button>terminar pedido</button>
             `;
             ContenedorPedido.classList.add("pedido");
+            ContenedorPedido.addEventListener('click', () => {
+              localStorage.setItem('PedidoSeleccionado',pedido.)
+              navigateTo('/popUpPedido');
+            });
             const btnTerminar = ContenedorPedido.getElementsByTagName('button')[0];
             btnTerminar.addEventListener('click', () => terminarPedido(pedido,mesa));
             ContenedorPedidos.appendChild(ContenedorPedido);
