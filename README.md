@@ -12,11 +12,11 @@ Antes de comenzar, asegúrate de tener instalado:
 ## Instalación
 1. Clona este repositorio:
    ```sh
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/Darch02/App-restaurante.git
    ```
 2. Accede al directorio del proyecto:
    ```sh
-   cd nombre-del-proyecto
+   cd orderly
    ```
 3. Instala las dependencias:
    ```sh
