@@ -8,7 +8,6 @@ async function Menu_aniadir(navigateTo) {
   botonver.addEventListener('click', () => { navigateTo('/verpedido'); });
 
 
-//   localStorage.setItem("menu_aniadir", JSON.stringify(menu_Aniadir));
 
   let contenedorMenuAniadir = container.querySelector('#contenedor-menu');
   let botonesCategoria = container.querySelectorAll('.categoria');

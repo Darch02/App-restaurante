@@ -65,6 +65,7 @@ async function Pedidos(navigateTo) {
           console.log(Mesas[index]);
           localStorage.setItem('Mesas', JSON.stringify(Mesas));
           console.log("se pudo guardar el pedido");
+          navigateTo('/pedidos')
         }
     }
     const selector = container.getElementsByClassName("selector-sector")[0];

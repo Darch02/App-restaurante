@@ -77,8 +77,8 @@ async function Mesas(navigateTo) {
    const Mesas =JSON.parse(stringMesas);
 
     // navegación a la página de editar
-    const edit= container.getElementsByClassName("editar")[0];
-    edit.addEventListener('click',() => navigateTo('/editarMesas'));
+    const edit= container.getElementsByClassName("añadir")[0];
+    edit.addEventListener('click',() => navigateTo('/popUpAñadirMesa'));
 
     const selector = container.getElementsByClassName("selector-sector")[0];
 
