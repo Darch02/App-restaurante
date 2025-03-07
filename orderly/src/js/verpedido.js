@@ -80,7 +80,9 @@ async function verpedido(navigateTo) {
     if (index !== -1) {
         mesas[index] = mesa;
         localStorage.setItem('Mesas', JSON.stringify(mesas));
-        console.log("se pudo guardar el pedido");
+        alert('El pedido ha sido guardado correctamente');
+        navigateTo('/mesas')
+
     }
   }
 

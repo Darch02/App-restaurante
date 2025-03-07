@@ -9,6 +9,19 @@ async function PopUpMesa(navigateTo) {
     //     window.history.back(); // Volver a la pantalla anterior
     // });
 
+    // se pinta el numero de la mesa
+    const MesaActual = JSON.parse(localStorage.getItem('MesaSeleccionada'));
+    const tituloMesa = container.getElementsByTagName('h1')[0];
+    tituloMesa.innerHTML= MesaActual.nombre;
+
+    // funcionalidad del botón de añadir pedido
+    const btnAñadirPedido = container.querySelector("#añadir-pedido");
+    btnAñadirPedido.addEventListener('click', () => {
+        if (container.parentElement) {
+            document.body.removeChild(container.parentElement);
+        }
+        navigateTo('/menu_aniadir');
+    })
     return container;
 }
 export default PopUpMesa;
