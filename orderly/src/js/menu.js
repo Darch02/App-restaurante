@@ -48,6 +48,12 @@ async function Menu(navigateTo) {
         }); 
 
           ContenedorItemMenu.classList.add("menu");
+
+          // Guardar el producto seleccionado en localStorage y abrir el pop-up
+          ContenedorItemMenu.addEventListener('click', () => {
+            localStorage.setItem("productoSeleccionado", JSON.stringify(item)); // Guardar el producto clicado
+            navigateTo('/popUpDescrMenu'); // Navegar al pop-up
+        });
           contenedorMenu.appendChild(ContenedorItemMenu);
 
           

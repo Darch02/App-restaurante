@@ -67,6 +67,12 @@ async function Menu_aniadir(navigateTo) {
             localStorage.setItem('pedido_en_proceso', JSON.stringify(pedidoActualizado));
         });
 
+        // Guardar el producto seleccionado en localStorage y abrir el pop-up
+        ContenedorItemMenuAniadir.addEventListener('click', () => {
+            localStorage.setItem("productoSeleccionado", JSON.stringify(item)); // Guardar el producto clicado
+            navigateTo('/popUpDescrMenu'); // Navegar al pop-up
+        });
+
         contenedorMenuAniadir.appendChild(ContenedorItemMenuAniadir);
     });
 }

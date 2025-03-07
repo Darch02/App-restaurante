@@ -66,7 +66,7 @@ async function Factura(navigateTo) {
         }
     }
 
-    const btnFinalizar = container.getElementsByTagName('button')[0];
+    const btnFinalizar = container.getElementsByTagName('button-factura')[0];
     btnFinalizar.addEventListener('click', ()=> finalizarPedido(mesaSeleccionada));
     pintarPedidos(mesaSeleccionada);
     calcularTotal(mesaSeleccionada);

@@ -1,0 +1,85 @@
+@use 'variables' as *;
+
+/* Contenedor principal */
+.factura-container {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h1-factura {
+    font-family: $tipografia;
+    text-align: center;
+    font-size: 2.5em;
+    color: #000000;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+h2-factura {
+    font-family: $tipografia;
+    display: block;
+    font-size: 1.5em;
+    color: #000000;
+    margin-top: 10px;
+}
+
+/* Contenedor de pedidos */
+#contenedor-pedidos {
+    margin-top: 20px;
+
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.pedido-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pedido-item:last-child {
+    border-bottom: none;
+}
+
+.pedido-detalle {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Total */
+#total {
+    font-family: $tipografia;
+    font-size: 1em;
+    color: #27ae60;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Botón de finalizar */
+button-factura {
+    font-family: $tipografia;
+    display: block;
+    background: #fca420;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.2em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.1s ease-in-out;
+    margin: 20px auto;
+    width: 45%;
+}
+
+button-factura:hover {
+    background: #c0392b;
+}

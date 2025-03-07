@@ -1,0 +1,28 @@
+#popupM-nombre {
+    font-size: 22px; // Tamaño de fuente llamativo
+    font-weight: bold; // Negrita para resaltar el nombre
+    text-align: center; // Centrado
+    color: #333; // Color oscuro para contraste
+    margin-bottom: 10px; // Espaciado inferior
+}
+
+#popupM-descripcion {
+    font-size: 16px; // Tamaño de fuente más pequeño
+    color: #555; // Color gris oscuro para texto descriptivo
+    text-align: center; // Centrado
+    padding: 0 15px; // Espaciado a los lados para que no quede pegado
+    line-height: 1.4; // Espaciado entre líneas para mejor lectura
+    margin-bottom: 15px; // Espaciado inferior
+}
+
+#popupM-precio {
+    margin-left: 70px;
+    font-size: 20px; // Tamaño un poco más grande para destacar el precio
+    font-weight: bold; // Negrita para énfasis
+    text-align: center; // Centrado
+    color: #fca420; // Color naranja vibrante para resaltar
+    background: rgba(252, 164, 32, 0.1); // Fondo semitransparente para destacar
+    padding: 8px 15px; // Espaciado interno
+    border-radius: 8px; // Bordes redondeados
+    display: inline-block; // Solo ocupa el espacio necesario
+}
