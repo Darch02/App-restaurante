@@ -120,6 +120,7 @@ async function Menu(navigateTo) {
 
       productos.forEach(item => {
           let ContenedorItemMenu = document.createElement('div');
+          ContenedorItemMenu.classList.add("menu");
           ContenedorItemMenu.innerHTML = `
               <div class="producto">
                   <img src="${item.imagen}" alt="Imagen-producto">
@@ -127,12 +128,6 @@ async function Menu(navigateTo) {
                   <p class="precio-producto">$${item.precio}</p>
               </div>
           `;
-
-          ContenedorItemMenu.addEventListener('click', () => {
-            navigateTo('/popUpDescrMenu');
-        }); 
-
-          ContenedorItemMenu.classList.add("menu");
 
           // Guardar el producto seleccionado en localStorage y abrir el pop-up
           ContenedorItemMenu.addEventListener('click', () => {
@@ -171,6 +166,8 @@ async function Menu(navigateTo) {
   // Obtener el menú almacenado y pintarlo
   const MenuString = localStorage.getItem("menu");
   pintarMenu(JSON.parse(MenuString));
+  const tituloPagina = document.getElementsByClassName('titulo-encabezado')[0];
+  tituloPagina.innerHTML = 'Menú'
 
   return container;
 }

@@ -24,7 +24,7 @@ const routes = [
     { path: '/verpedido', component: verpedido},
     { path: '/popUpEditarMesa', component:PopUpEditarMesa, isPopup: true},
     { path: '/popUpAñadirMesa', component:PopUpAñadirMesa, isPopup:true},
-    { path: '/popUpDescrMenu', component:PopUpDescrMenu, isPopup:true},
+    { path: '/popUpDescrMenu', component:PopUpDescrMenu, isPopup: true},
     { path: '/factura', component:Factura },
     { path: '/popUpPedido', component: PopUpPedido, isPopup:true}
 ];

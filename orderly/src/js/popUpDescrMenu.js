@@ -14,13 +14,6 @@ async function PopUpDescrMenu(navigateTo) {
         container.querySelector('#popupM-precio').textContent = `Precio: $${producto.precio}`;
     }
 
-    // Evento para cerrar el pop-up si se hace clic fuera del contenido
-    container.addEventListener('click', (event) => {
-        if (event.target === container) {
-            cerrarPopup();
-        }
-    });
-
     return container;
 }
 

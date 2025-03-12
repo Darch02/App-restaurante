@@ -89,6 +89,9 @@ async function Pedidos(navigateTo) {
 
 
     pintarPedidosSector('Piso 1');
+    const tituloPagina = document.getElementsByClassName('titulo-encabezado')[0];
+    tituloPagina.innerHTML = 'Pedidos'
+
     return container;
 
   }

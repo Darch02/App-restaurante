@@ -96,6 +96,8 @@ async function Mesas(navigateTo) {
     }else{
         pintarSector("Piso 1");
     }
+    const tituloPagina = document.getElementsByClassName('titulo-encabezado')[0];
+    tituloPagina.innerHTML = 'Mesas'
     return container;
   }
   
