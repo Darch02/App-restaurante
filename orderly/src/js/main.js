@@ -53,6 +53,7 @@ async function navigateTo(hash,addToHistory = true) {
 }
 
 window.onpopstate = () => {
+    cerrarPopUp();
     navigateTo(window.location.hash.substring(1), false);
 };
 
@@ -70,14 +71,19 @@ function abrirPopUp(route) {
             // 🔹 Cerrar pop-up al hacer clic fuera del contenido
             popUpContainer.addEventListener("click", (e) => {
                 if (e.target === popUpContainer) {
-                    document.body.removeChild(popUpContainer);
+                    cerrarPopUp();
                     window.history.back(); // Volver a la pantalla anterior
                 }
             });
         };
     });
 }
-
+function cerrarPopUp() {
+    const popUpContainer = document.getElementsByClassName('popup-container')[0];
+    if (document.body.contains(popUpContainer)) {
+        document.body.removeChild(popUpContainer);
+    }
+}
 function abrir(route){
 
     if (root.firstChild) {

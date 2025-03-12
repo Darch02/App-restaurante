@@ -27,31 +27,32 @@ async function Factura(navigateTo) {
         let ContenedorPedido;
         ContenedorPedidos.innerHTML='';
         mesa.pedidos.forEach((pedido,index) => {
-            ContenedorPedido= document.createElement('div');
-            ContenedorPedido.innerHTML= `
-            <div class='pedido-mesa'>
-                <h3>Id pedido : `+index+`</h3>
-                <h3>Alimentos</h3>
-                <div class='alimentos'>
+            if(pedido.estado === 'terminado'){
+                ContenedorPedido= document.createElement('div');
+                ContenedorPedido.innerHTML= `
+                <div class='pedido-mesa'>
+                    <h3>Id pedido : `+index+`</h3>
+                    <h3>Alimentos</h3>
+                    <div class='alimentos'>
+                    </div>
                 </div>
-            </div>
-            `;
-            
-            const listaAlimentos =ContenedorPedido.getElementsByClassName('alimentos')[0];
-            let alimento;
-            pedido.alimentos.forEach(item =>{
-                alimento= document.createElement('div')
-                alimento.classList.add('pedido-item');
-                alimento.innerHTML=`
-                <p><strong>Producto:</strong> ${item.nombreProducto}</p>
-                <p><strong>Precio:</strong> $${item.precio}</p>
-                <p><strong>Cantidad:</strong> ${item.cantidad}</p>
                 `;
-                listaAlimentos.appendChild(alimento);
-            })
+                
+                const listaAlimentos =ContenedorPedido.getElementsByClassName('alimentos')[0];
+                let alimento;
+                pedido.alimentos.forEach(item =>{
+                    alimento= document.createElement('div')
+                    alimento.classList.add('pedido-item');
+                    alimento.innerHTML=`
+                    <p><strong>Producto:</strong> ${item.nombreProducto}</p>
+                    <p><strong>Precio:</strong> $${item.precio}</p>
+                    <p><strong>Cantidad:</strong> ${item.cantidad}</p>
+                    `;
+                    listaAlimentos.appendChild(alimento);
+                })
 
-            ContenedorPedidos.appendChild(ContenedorPedido)
-            
+                ContenedorPedidos.appendChild(ContenedorPedido)
+            }
         })
     }
 
