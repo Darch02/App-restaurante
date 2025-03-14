@@ -54,7 +54,7 @@ async function verpedido(navigateTo) {
 
       calcularTotal(); // Calcular total al pintar los productos
   }
-
+  pintarVerPedido();
   // Botón "Comandar"
   const botonComandar = container.querySelector('#comandar');
   let mesa = JSON.parse(localStorage.getItem("MesaSeleccionada")) || [];
@@ -66,14 +66,15 @@ async function verpedido(navigateTo) {
 
   // función para comandar el pedido
   function Comandar(mesa) {
+    console.log("mesa - comandar",mesa);
     if (!mesa) {
         console.error("No hay mesa seleccionada.");
         return;
     }
     // Añadir pedido
     pedido_en_proceso.total= total_pedido;
+    console.log(pedido_en_proceso);
     mesa.pedidos.push(pedido_en_proceso);
-    mesa.Estado = "ocupada";
     let mesas = JSON.parse(localStorage.getItem('Mesas')) || [];
 
     let index = mesas.findIndex(m => m.nombre === mesa.nombre);
@@ -87,7 +88,6 @@ async function verpedido(navigateTo) {
   }
 
   // Pintar el pedido en pantalla
-  pintarVerPedido();
 
   return container;
 }
