@@ -4,7 +4,7 @@ import Menu from "./menu";
 import editarMesas from "./editarMesas";
 import Menu_aniadir from "./menu_aniadir";
 import PopUpMesa from "./popUpMesa";
-import verpedido from "./verpedido";
+import popUpVerpedido from "./popUpVerpedido";
 import PopUpDescrMenu from "./popUpDescrMenu";
 import PopUpEditarMesa from "./popUpEditarMesa";
 import PopUpAniadirMesa from "./popUpAniadirMesa";
@@ -21,7 +21,7 @@ const routes = [
     { path: '/editarMesas', component: editarMesas},
     { path: '/menu_aniadir', component: Menu_aniadir},
     { path: '/popUpMesa', component:PopUpMesa ,isPopup: true },
-    { path: '/verpedido', component: verpedido},
+    { path: '/popUpVerpedido', component: popUpVerpedido},
     { path: '/popUpEditarMesa', component:PopUpEditarMesa, isPopup: true},
     { path: '/popUpAniadirMesa', component:PopUpAniadirMesa, isPopup:true},
     { path: '/popUpDescrMenu', component:PopUpDescrMenu, isPopup: true},
@@ -68,13 +68,22 @@ function abrirPopUp(route) {
             popUpContainer.appendChild(newComponent);
             document.body.appendChild(popUpContainer);
             
-            // 🔹 Cerrar pop-up al hacer clic fuera del contenido
-            popUpContainer.addEventListener("click", (e) => {
+             // 🔹 Cerrar pop-up al hacer clic fuera del contenido
+             popUpContainer.addEventListener("click", (e) => {
                 if (e.target === popUpContainer) {
                     cerrarPopUp();
                     window.history.back(); // Volver a la pantalla anterior
                 }
             });
+
+            // 🔹 Capturar el botón de cerrar dentro del popup y añadir evento
+            const cerrarPopupBtn = popUpContainer.querySelector('#cerrar-popup');
+            if (cerrarPopupBtn) {
+                cerrarPopupBtn.addEventListener('click', () => {
+                    cerrarPopUp();
+                    window.history.back(); // Vuelve a la pantalla anterior
+                });
+            }
         };
     });
 }

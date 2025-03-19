@@ -4,26 +4,26 @@ h1 {
     font-family: $tipografia;
     margin-left: 5%;
     margin-right: 5%;
-
+    font-size: 20px;
+    margin-top: 40px;
 }
 
 .contenedor-pedido {
     background: #ffffff; // Fondo blanco
     border-radius: 12px; // Bordes redondeados
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); // Sombra suave
     padding: 20px; // Espaciado interno
     max-width: 600px; // Ancho máximo
     margin: 20px auto; // Centrar el contenedor
+    margin-bottom: 0px;
     font-family: 'Arial', sans-serif; // Fuente moderna
     overflow-y: auto; // Agregar scroll si hay muchos pedidos
-    max-height: 400px; // Altura máxima antes de hacer scroll
+    
 }
 
 // Estilos para cada item del pedido
 .pedido-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-content: center;
     background: #f8f9fa; // Fondo gris claro
     padding: 12px;
     border-radius: 8px;

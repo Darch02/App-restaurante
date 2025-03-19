@@ -5,7 +5,7 @@ async function Menu_aniadir(navigateTo) {
   container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
 
   const botonver = container.getElementsByClassName("ver-pedido")[0];
-  botonver.addEventListener('click', () => { navigateTo('/verpedido'); });
+  botonver.addEventListener('click', () => { navigateTo('/popUpVerpedido'); });
 
 
 
