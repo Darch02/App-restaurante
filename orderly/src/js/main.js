@@ -10,6 +10,7 @@ import PopUpEditarMesa from "./popUpEditarMesa";
 import PopUpAniadirMesa from "./popUpAniadirMesa";
 import Factura from "./factura";
 import PopUpPedido from "./popUpPedido";
+import PopUpEliminar from "./popUpEliminar";
 
 
 window.onload = init;
@@ -26,7 +27,8 @@ const routes = [
     { path: '/popUpAniadirMesa', component:PopUpAniadirMesa, isPopup:true},
     { path: '/popUpDescrMenu', component:PopUpDescrMenu, isPopup: true},
     { path: '/factura', component:Factura },
-    { path: '/popUpPedido', component: PopUpPedido, isPopup:true}
+    { path: '/popUpPedido', component: PopUpPedido, isPopup:true},
+    { path: '/popUpEliminar', component: PopUpEliminar, isPopup:true}
 ];
 
 function init(){

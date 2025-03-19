@@ -76,6 +76,10 @@ async function Mesas(navigateTo) {
     const edit= container.getElementsByClassName("aniadir")[0];
     edit.addEventListener('click',() => navigateTo('/popUpAniadirMesa'));
 
+    // navegación al pup up eliminar sector
+    const eliminar = container.getElementsByClassName("eliminar-sector")[0];
+    eliminar.addEventListener('click',() => navigateTo('/popUpEliminar'));
+
     const selector = container.getElementsByClassName("selector-sector")[0];
 
     // muestra distintas mesas dependiendo del sector
