@@ -31,3 +31,28 @@
     border-radius: 8px; // Bordes redondeados
     display: inline-block; // Solo ocupa el espacio necesario
 }
+
+.cerrar-popup {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; /* Ajusta según sea necesario */
+    height: 32px;
+}
+
+.cerrar-popup img {
+    width: 24px;  /* Ajusta según el tamaño del SVG */
+    height: 24px;
+    transition: transform 0.2s ease-in-out, opacity 0.2s;
+}
+
+.cerrar-popup:hover img {
+    transform: scale(1.2); /* Efecto de agrandamiento */
+    opacity: 0.7; /* Hace que se vea un poco más tenue */
+}
