@@ -1,7 +1,7 @@
 import Mesas from "./mesas";
 
 async function PopUpAñadirMesa(navigateTo) {
-    const response = await fetch('/PopUpAñadirMesa.html'); // Carga el HTML externo
+    const response = await fetch('/PopUpAniadirMesa.html'); // Carga el HTML externo
     const htmlText = await response.text(); // Convierte la respuesta en texto HTML
     const container = document.createElement('div'); // Crear un contenedor temporal
     container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
