@@ -100,6 +100,23 @@ function abrir(route){
 }
 
 
+const footerItems = document.querySelectorAll('.footer-item');
+
+// Función para cambiar la clase "active" en el footer
+function activarFooterItem(elemento) {
+    // Remueve la clase "active" de todos los elementos del footer
+    footerItems.forEach(item => item.classList.remove('active'));
+    // Agrega la clase "active" solo al elemento clicado
+    elemento.classList.add('active');
+}
+
+// Agrega el evento click a cada ítem del footer
+footerItems.forEach(item => {
+    item.addEventListener('click', function () {
+        activarFooterItem(this);
+    });
+});
+
 const iconoPedidos = document.getElementById('icono-pedidos')
 const iconoMesas = document.getElementById('icono-mesas')
 const iconoMenu = document.getElementById('icono-menu')
@@ -107,3 +124,5 @@ const iconoMenu = document.getElementById('icono-menu')
 iconoPedidos.addEventListener('click', () => {navigateTo('/pedidos')})
 iconoMesas.addEventListener('click',() => {navigateTo('/mesas')})
 iconoMenu.addEventListener('click',() => {navigateTo('/menu')})
+
+

@@ -86,3 +86,7 @@ select{
 .mesa-ocupada{
   background-color: $gris-oscuro; // cuando la mesa está ocupada
 }
+
+.footer-item.active p {
+  font-weight: bold;
+}
