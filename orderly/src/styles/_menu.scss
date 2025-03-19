@@ -145,35 +145,34 @@
   margin-top: 15px;
   margin-bottom: 0px;
   border-width: 1px;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 5px;
+  font-size: 14px;
+  background: #fff;
+  padding: 5px 10px 5px 10px;;
   transition: background 0.3s ease, transform 0.2s ease;
 
-  &:active {
-    background-color: $verde;
-    color:white;
+}
+
+.aniadir:active {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
     transform: scale(0.95);
 }
 
-
-}
-
 .add{
-    height: 30px;
-    bottom: 10px; /* Ajusta la distancia desde la parte inferior */
-    right: 10px; /* Ajusta la distancia desde la derecha */
+    height: 27px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    transition: background 0.3s, transform 0.2s;
+    border-width: 1px;
+    border-radius: 15px;
+    font-size: 14px;
+    background: #fff;
+    padding: 5px 10px 5px 10px;;
+    transition: background 0.3s ease, transform 0.2s ease;
 
     &:active {
-        background-color: $verde;
-        color:white;
+        background-color: #000000;
+        color: rgb(255, 255, 255);
         transform: scale(0.95);
     }
 
