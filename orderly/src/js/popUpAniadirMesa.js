@@ -22,7 +22,8 @@ async function PopUpAñadirMesa(navigateTo) {
         });
     
     }
-    
+    OpcionesSelector(Sectores);
+
     container.getElementsByTagName('form')[0].addEventListener("submit", (e) => {
         e.preventDefault(); // 🔥 Evita la recarga
         let mesaNueva;
