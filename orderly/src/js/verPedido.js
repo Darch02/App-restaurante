@@ -1,5 +1,5 @@
-async function verpedido(navigateTo) {
-  const response = await fetch('/PopUpVerpedido.html'); // Carga el HTML externo
+async function verPedido(navigateTo) {
+  const response = await fetch('/Verpedido.html'); // Carga el HTML externo
   const htmlText = await response.text(); // Convierte la respuesta en texto HTML
   const container = document.createElement('div'); // Crear un contenedor temporal
   container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
@@ -54,15 +54,8 @@ async function verpedido(navigateTo) {
 
       calcularTotal(); // Calcular total al pintar los productos
   }
+  // Pintar el pedido en pantalla
   pintarVerPedido();
-  // Botón "Comandar"
-  const botonComandar = container.querySelector('#comandar');
-  let mesa = JSON.parse(localStorage.getItem("MesaSeleccionada")) || [];
-  if (botonComandar) {
-      botonComandar.addEventListener('click', () => Comandar(mesa));
-  } else {
-      console.error("No se encontró el botón #comandar.");
-  }
 
   // función para comandar el pedido
   function Comandar(mesa) {
@@ -86,10 +79,17 @@ async function verpedido(navigateTo) {
 
     }
   }
-
-  // Pintar el pedido en pantalla
+    // Botón "Comandar"
+  const botonComandar = container.querySelector('#comandar');
+  let mesa = JSON.parse(localStorage.getItem("MesaSeleccionada")) || [];
+  if (botonComandar) {
+      botonComandar.addEventListener('click', () => Comandar(mesa));
+  } else {
+      console.error("No se encontró el botón #comandar.");
+  }
+  
 
   return container;
 }
 
-export default verpedido;
+export default verPedido;

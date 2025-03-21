@@ -5,41 +5,45 @@ async function Mesas(navigateTo) {
     const container = document.createElement('div'); // Crear un contenedor temporal
     container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
 
-    // variable en la cual se guardaría toda la información de las mesas. esto despúes se debe guardar en local storage
-    const mesas= [{
-        nombre: 'Mesa 1',
-        Estado: 'libre',
-        sector: 'Piso 1',
-        pedidos: []
-    },
-    {
-        nombre: 'Mesa 2',
-        Estado: 'libre',
-        sector: 'Piso 1',
-        pedidos: []
-    },
-    {
-        nombre: 'Mesa 3',
-        Estado: 'libre',
-        sector: 'Piso 2',
-        pedidos: []
-    },
-    {
-        nombre: 'Mesa 4',
-        Estado: 'libre',
-        sector: 'Piso 2',
-        pedidos: []
-    }];
+    const Sectores = JSON.parse(localStorage.getItem('sectores')) || [];
 
-    let pedido_en_proceso = {
-        alimentos: [],
-        estado: 'activo',
-        total: 0
-      };
-    //localStorage.setItem("Mesas",JSON.stringify(mesas)); // se guarda en localstorage
+    const selector = container.getElementsByClassName("selector-sector")[0];
+   
+    function OpcionesSelector(sectores){
+    
+        if (sectores.length === 0) {
+            // Si no hay sectores, agregamos un mensaje temporal
+            const optionEmpty = document.createElement("option");
+            optionEmpty.value = "";
+            optionEmpty.textContent = "Ningún sector disponible";
+            optionEmpty.disabled = true;
+            optionEmpty.selected = true;
+            selector.appendChild(optionEmpty);
+        } else {
+            // Agregamos los sectores disponibles
+            sectores.forEach(sector => {
+                const option = document.createElement("option");
+                option.value = sector;
+                option.textContent = sector;
+                selector.appendChild(option);
+            });
+        }
+    
+        const optionAniadir = document.createElement("option");
+        optionAniadir.value = "Añadir sector ..";
+        optionAniadir.textContent = "Añadir sector ..";
 
-    /* todo el codigo anterior comentado es en el que se guardan las variables iniclamente. como ya las guardé una vez en en local storage
-    no lo tengo que volver a hacer, ya que el almacenamieto es persistente*/
+        selector.appendChild(optionAniadir);
+
+        selector.addEventListener("change", (event) => {
+            if(event.target.value !== 'Añadir sector ..'){
+                pintarSector(event.target.value);
+            }else{
+                navigateTo('/popUpAniadirSector');
+            }
+        });
+    
+    }
     
     const ContenedorMesas = container.querySelector('#contenedor-mesas');
    // pinta cada una de las mesas dentro de la variable mesas.
@@ -69,23 +73,8 @@ async function Mesas(navigateTo) {
     });
    }
 
-   const stringMesas = localStorage.getItem('Mesas'); // se obtienen las mesas del localstorage
-   const Mesas =JSON.parse(stringMesas) || [];
-
-    // navegación a la página de editar
-    const edit= container.getElementsByClassName("aniadir")[0];
-    edit.addEventListener('click',() => navigateTo('/popUpAniadirMesa'));
-
-    // navegación al pup up eliminar sector
-    const eliminar = container.getElementsByClassName("eliminar-sector")[0];
-    eliminar.addEventListener('click',() => navigateTo('/popUpEliminar'));
-
-    const selector = container.getElementsByClassName("selector-sector")[0];
-
-    // muestra distintas mesas dependiendo del sector
-    selector.addEventListener("change", (event) => {
-        pintarSector(event.target.value)
-    });
+    const stringMesas = localStorage.getItem('Mesas'); // se obtienen las mesas del localstorage
+    const Mesas =JSON.parse(stringMesas) || [];
 
     let mesasSector;
     // función para pintar las mesas dependiendo del sector
@@ -94,14 +83,35 @@ async function Mesas(navigateTo) {
         ContenedorMesas.replaceChildren();
         pintarMesas(mesasSector);
     };
+
+    // navegación pop up añadir mesa
+    const aniadir_mesa= container.getElementsByClassName("aniadir")[0];
+    aniadir_mesa.addEventListener('click',() => navigateTo('/popUpAniadirMesa'));
+
+    // navegación al pup up eliminar sector
+    const eliminar_sector = container.getElementsByClassName("eliminar-sector")[0];
+    eliminar_sector.addEventListener('click',() => navigateTo('/popUpEliminar'));
+
     // inicialización:
-    if( Mesas.length === 0){
-        ContenedorMesas.innerHTML='No hay mesas agregadas';
-    }else{
-        pintarSector("Piso 1");
+    function init(){
+        OpcionesSelector(Sectores);
+        if( Sectores.length === 0){
+            ContenedorMesas.innerHTML='No hay sector seleccionado';
+            // si no hay sectores creados estos botones no se deberían ver
+            aniadir_mesa.style.display = 'none'
+            eliminar_sector.style.display = 'none'
+        }else{
+            
+            aniadir_mesa.style.display = 'flex'
+            eliminar_sector.style.display = 'inline'
+
+            // muestra distintas mesas dependiendo del sector
+            pintarSector(Sectores[0]);
+        }
+        const tituloPagina = document.getElementsByClassName('titulo-encabezado')[0];
+        tituloPagina.innerHTML = 'Mesas'
     }
-    const tituloPagina = document.getElementsByClassName('titulo-encabezado')[0];
-    tituloPagina.innerHTML = 'Mesas'
+    init();
     return container;
   }
   

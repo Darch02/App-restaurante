@@ -5,9 +5,10 @@ async function Menu_aniadir(navigateTo) {
   container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
 
   const botonver = container.getElementsByClassName("ver-pedido")[0];
-  botonver.addEventListener('click', () => { navigateTo('/popUpVerpedido'); });
+  botonver.addEventListener('click', () => { navigateTo('/Verpedido'); });
 
-
+  const tituloPagina = document.getElementsByClassName('titulo-encabezado')[0];
+  tituloPagina.innerHTML = 'Menu pedido';
 
   let contenedorMenuAniadir = container.querySelector('#contenedor-menu');
   let botonesCategoria = container.querySelectorAll('.categoria');

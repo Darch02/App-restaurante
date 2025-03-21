@@ -8,6 +8,36 @@ async function Pedidos(navigateTo) {
     //pedido.total.toLocaleString()
 
     const ContenedorPedidos = container.querySelector('#contenedor-pedidos');
+    // busca los sectores
+    const Sectores = JSON.parse(localStorage.getItem('sectores')) || [];
+    // elemento del selector
+    const selector = container.getElementsByClassName("selector-sector")[0];
+   
+    function OpcionesSelector(sectores){
+    
+        if (sectores.length === 0) {
+            // Si no hay sectores, agregamos un mensaje temporal
+            const optionEmpty = document.createElement("option");
+            optionEmpty.value = "";
+            optionEmpty.textContent = "Ningún sector disponible";
+            optionEmpty.disabled = true;
+            optionEmpty.selected = true;
+            selector.appendChild(optionEmpty);
+        } else {
+            // Agregamos los sectores disponibles
+            sectores.forEach(sector => {
+                const option = document.createElement("option");
+                option.value = sector;
+                option.textContent = sector;
+                selector.appendChild(option);
+            });
+        }
+
+        selector.addEventListener("change", (event) => {
+          pintarPedidosSector(event.target.value);
+        });
+    
+    }
     // pinta cada uno de los pedidos de las mesas.
     function pintarPedidos(mesas,estado) {
       let ContenedorPedido;
@@ -73,12 +103,6 @@ async function Pedidos(navigateTo) {
           navigateTo('/pedidos')
         }
     }
-    const selector = container.getElementsByClassName("selector-sector")[0];
-
-    // muestra los pedidos de los diferentes sectores
-    selector.addEventListener("change", (event) => {
-        pintarPedidosSector(event.target.value)
-    });
 
     // función para pintar las mesas dependiendo del sector
     let mesasSector;
@@ -87,7 +111,8 @@ async function Pedidos(navigateTo) {
         pintarPedidos(mesasSector,selecciónEstado);
     };
 
-
+    // inicialización
+    OpcionesSelector(Sectores);
     pintarPedidosSector('Piso 1');
     const tituloPagina = document.getElementsByClassName('titulo-encabezado')[0];
     tituloPagina.innerHTML = 'Pedidos'

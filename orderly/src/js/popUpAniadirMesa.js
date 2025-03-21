@@ -7,12 +7,27 @@ async function PopUpAñadirMesa(navigateTo) {
     container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
 
     const Mesas = JSON.parse(localStorage.getItem('Mesas')) || [];
+    const Sectores = JSON.parse(localStorage.getItem('sectores')) || [];
+    // elemento del selector
+    const selector = container.getElementsByTagName('select')[0];
+   
+    function OpcionesSelector(sectores){
+    
+        // Agregamos los sectores disponibles
+        sectores.forEach(sector => {
+            const option = document.createElement("option");
+            option.value = sector;
+            option.textContent = sector;
+            selector.appendChild(option);
+        });
+    
+    }
     
     container.getElementsByTagName('form')[0].addEventListener("submit", (e) => {
         e.preventDefault(); // 🔥 Evita la recarga
         let mesaNueva;
         const nombreMesa = document.getElementById("nombre-mesa").value;
-        const sector = document.getElementById("sector").value;
+        const sector = selector.value;
 
 
         const mesaExiste = Mesas.some(mesa => mesa.nombre.toLowerCase() === nombreMesa.toLowerCase());

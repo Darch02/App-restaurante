@@ -4,13 +4,14 @@ import Menu from "./menu";
 import editarMesas from "./editarMesas";
 import Menu_aniadir from "./menu_aniadir";
 import PopUpMesa from "./popUpMesa";
-import popUpVerpedido from "./popUpVerpedido";
+import verPedido from "./verpedido";
 import PopUpDescrMenu from "./popUpDescrMenu";
 import PopUpEditarMesa from "./popUpEditarMesa";
 import PopUpAniadirMesa from "./popUpAniadirMesa";
 import Factura from "./factura";
 import PopUpPedido from "./popUpPedido";
 import PopUpEliminar from "./popUpEliminar";
+import PopUpAniadirSector from "./popUpAniadirSector";
 
 
 window.onload = init;
@@ -22,13 +23,14 @@ const routes = [
     { path: '/editarMesas', component: editarMesas},
     { path: '/menu_aniadir', component: Menu_aniadir},
     { path: '/popUpMesa', component:PopUpMesa ,isPopup: true },
-    { path: '/popUpVerpedido', component: popUpVerpedido},
+    { path: '/Verpedido', component: verPedido},
     { path: '/popUpEditarMesa', component:PopUpEditarMesa, isPopup: true},
     { path: '/popUpAniadirMesa', component:PopUpAniadirMesa, isPopup:true},
     { path: '/popUpDescrMenu', component:PopUpDescrMenu, isPopup: true},
     { path: '/factura', component:Factura },
     { path: '/popUpPedido', component: PopUpPedido, isPopup:true},
-    { path: '/popUpEliminar', component: PopUpEliminar, isPopup:true}
+    { path: '/popUpEliminar', component: PopUpEliminar, isPopup:true},
+    { path: '/popUpAniadirSector', component: PopUpAniadirSector, isPopup: true}
 ];
 
 function init(){
