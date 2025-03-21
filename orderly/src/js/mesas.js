@@ -7,7 +7,14 @@ async function Mesas(navigateTo) {
 
     const Sectores = JSON.parse(localStorage.getItem('sectores')) || [];
 
+
     const selector = container.getElementsByClassName("selector-sector")[0];
+
+    const pedido_en_proceso = {
+        estado: 'activo',
+        alimentos: [],
+        total: 0
+    };
    
     function OpcionesSelector(sectores){
     
@@ -38,6 +45,7 @@ async function Mesas(navigateTo) {
         selector.addEventListener("change", (event) => {
             if(event.target.value !== 'Añadir sector ..'){
                 pintarSector(event.target.value);
+                localStorage.setItem('sectorActual', event.target.value);
             }else{
                 navigateTo('/popUpAniadirSector');
             }

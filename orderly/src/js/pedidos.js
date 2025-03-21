@@ -41,56 +41,82 @@ async function Pedidos(navigateTo) {
     // pinta cada uno de los pedidos de las mesas.
     function pintarPedidos(mesas,estado) {
       let ContenedorPedido;
+      let Contenedor;
       ContenedorPedidos.innerHTML='';
-      mesas.forEach(mesa => {
-        mesa.pedidos.forEach((pedido,index) => {
-          if(pedido.estado === estado){
-            ContenedorPedido= document.createElement('div');
-            ContenedorPedido.innerHTML= `
-            <div>
-              <p class="numero-mesa">`+mesa.nombre+`</p><p class="estado-pedido">`+pedido.estado+`</p>
-            </div>
-            <p><strong>Id: </strong>`+index+`<p>
-            <p>total: $`+ pedido.total.toLocaleString()+`</p>
-            ${pedido.estado !== 'terminado' ? '<button class="terminar-pedido">Terminar pedido</button>' : ''}
-            `;
-            ContenedorPedido.classList.add("pedido");
-            ContenedorPedido.addEventListener('click', () => {
-              localStorage.setItem('PedidoSeleccionado',JSON.stringify(pedido));
-              navigateTo('/popUpPedido');
-            });
-            if (pedido.estado !== 'terminado') {
-              const btnTerminar = ContenedorPedido.getElementsByTagName('button')[0];
-              btnTerminar.addEventListener('click', (event) => {
-                  event.stopPropagation();
-                  terminarPedido(pedido, mesa);
-              });
-          }
-            ContenedorPedidos.appendChild(ContenedorPedido);
-          }
+      if( estado === 'En espera'){
+        const mesasEnEspera = mesas.filter(m => (m.Estado === 'ocupada' && m.pedidos.length === 0))
+        mesasEnEspera.forEach(mesa =>{
+          Contenedor= document.createElement('div');
+          Contenedor.innerHTML= `
+          <div>
+            <p class="numero-mesa">`+mesa.nombre+`</p><p class="estado-pedido">`+estado+`</p>
+          </div>`
+          Contenedor.classList.add("pedido");
+          ContenedorPedidos.appendChild(Contenedor);
         })
-     });
+      }else{
+        mesas.forEach(mesa => {
+          mesa.pedidos.forEach((pedido,index) => {
+            if(pedido.estado === estado){
+              ContenedorPedido= document.createElement('div');
+              ContenedorPedido.innerHTML= `
+              <div>
+                <p class="numero-mesa">`+mesa.nombre+`</p><p class="estado-pedido">`+pedido.estado+`</p>
+              </div>
+              <p><strong>Id: </strong>`+index+`<p>
+              <p>total: $`+ pedido.total.toLocaleString()+`</p>
+              ${pedido.estado !== 'terminado' ? '<button class="terminar-pedido">Terminar pedido</button>' : ''}
+              `;
+              ContenedorPedido.classList.add("pedido");
+              ContenedorPedido.addEventListener('click', () => {
+                localStorage.setItem('PedidoSeleccionado',JSON.stringify(pedido));
+                navigateTo('/popUpPedido');
+              });
+              if (pedido.estado !== 'terminado') {
+                const btnTerminar = ContenedorPedido.getElementsByTagName('button')[0];
+                btnTerminar.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    terminarPedido(pedido, mesa);
+                });
+            }
+              ContenedorPedidos.appendChild(ContenedorPedido);
+            }
+          })
+       });
+      }
+      
     }
     // se cambia el estado de la variable según el botón seleccionado
-    let selecciónEstado = 'activo'
+    let seleccionEstado = 'En espera'
     const btnActivos = container.getElementsByClassName('boton-activo')[0];
     btnActivos.addEventListener('click', ()=> {
-      selecciónEstado='activo';
+      seleccionEstado='activo';
       btnActivos.classList.add('estado-seleccionado');
       btnTerminados.classList.remove('estado-seleccionado');
-      pintarPedidos(mesasSector,selecciónEstado);
+      btnEnespera.classList.remove('estado-seleccionado');
+      pintarPedidos(mesasSector,seleccionEstado);
     })
 
     const btnTerminados = container.getElementsByClassName('boton-terminado')[0];
     btnTerminados.addEventListener('click', ()=> {
-      selecciónEstado='terminado';
+      seleccionEstado='terminado';
       btnTerminados.classList.add('estado-seleccionado');
       btnActivos.classList.remove('estado-seleccionado');
-      pintarPedidos(mesasSector,selecciónEstado);
+      btnEnespera.classList.remove('estado-seleccionado');
+      pintarPedidos(mesasSector,seleccionEstado);
     })
 
-    const stringMesas = localStorage.getItem('Mesas') || []; // se obtienen las mesas del localstorage
-    const Mesas =JSON.parse(stringMesas);
+    const btnEnespera = container.getElementsByClassName('boton-espera')[0];
+    btnEnespera.classList.add('estado-seleccionado');
+    btnEnespera.addEventListener('click', ()=> {
+      seleccionEstado='En espera';
+      btnEnespera.classList.add('estado-seleccionado');
+      btnTerminados.classList.remove('estado-seleccionado');
+      btnActivos.classList.remove('estado-seleccionado');
+      pintarPedidos(mesasSector,seleccionEstado);
+    })
+
+    const Mesas =JSON.parse(localStorage.getItem('Mesas')) || [];
 
     function terminarPedido(pedido,mesa){
       let index = Mesas.findIndex(m => m.nombre === mesa.nombre);
@@ -108,7 +134,7 @@ async function Pedidos(navigateTo) {
     let mesasSector;
     function pintarPedidosSector(seleccion){
         mesasSector = Mesas.filter((mesa) => mesa.sector === seleccion);
-        pintarPedidos(mesasSector,selecciónEstado);
+        pintarPedidos(mesasSector,seleccionEstado);
     };
 
     // inicialización
