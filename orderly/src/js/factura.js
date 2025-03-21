@@ -14,7 +14,8 @@ async function Factura(navigateTo) {
     const contTotal = container.querySelector('#total');
     
     function calcularTotal(mesa) {  
-        let total = mesa.pedidos.reduce((acc, item) => {
+        const pedidosTerminados = mesa.pedidos.filter(pedido => pedido.estado === 'terminado')
+        let total = pedidosTerminados.reduce((acc, item) => {
             let precioNumerico = item.total;
             return acc + precioNumerico;
         }, 0);
