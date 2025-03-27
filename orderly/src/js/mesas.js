@@ -60,7 +60,7 @@ async function Mesas(navigateTo) {
     mesas.forEach(mesa => {
         ContenedorMesa= document.createElement('div');
         ContenedorMesa.innerHTML= `
-        <img class= "img-mesas" src="../src/assets/icono-mesa.svg" alt="imagen mesa"/>
+        <img class= "img-mesas" src="/assets/icono-mesa.svg" alt="imagen mesa"/>
         <p>`+ mesa.nombre + `</p>
         `;
         
