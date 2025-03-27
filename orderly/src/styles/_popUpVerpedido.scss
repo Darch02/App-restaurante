@@ -36,8 +36,16 @@ h1 {
     }
 }
 
+.pedido-item img{
+    display: inline;
+    height: 20px;
+    width: auto;
+}
+
 // Estilos para el nombre del producto
 .pedido-item p {
+    display: flex;
+    justify-content: space-between;
     margin: 5px 0;
     font-size: 16px;
     color: #333;

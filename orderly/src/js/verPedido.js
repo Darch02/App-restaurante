@@ -39,15 +39,17 @@ async function verPedido(navigateTo) {
           return;
       }
 
-      pedido_en_proceso.alimentos.forEach(item => {
+      pedido_en_proceso.alimentos.forEach((item,index) => {
           let divPedido = document.createElement('div');
           divPedido.classList.add("pedido-item");
 
           divPedido.innerHTML = `
               <p><strong>Producto:</strong> ${item.nombreProducto}</p>
               <p><strong>Precio:</strong> $${item.precio}</p>
-              <p><strong>Cantidad:</strong> ${item.cantidad}</p>
+              <p><strong>Cantidad:</strong> <img id='icono-eliminar' src="../src/assets/icono-eliminar.svg" > ${item.cantidad}</img></p>
           `;
+         const btnEliminarItem = divPedido.querySelector('#icono-eliminar');
+         btnEliminarItem.addEventListener('click', () => EliminarItem(index));
 
           contenedorPedido.appendChild(divPedido);
       });
@@ -76,8 +78,19 @@ async function verPedido(navigateTo) {
         localStorage.setItem('Mesas', JSON.stringify(mesas));
         alert('El pedido ha sido guardado correctamente');
         navigateTo('/mesas')
-
     }
+  }
+
+  function EliminarItem(index){
+    let cantidad = pedido_en_proceso.alimentos[index].cantidad;
+    if(cantidad > 1){
+        pedido_en_proceso.alimentos[index].cantidad --;
+    }
+    else{
+        pedido_en_proceso.alimentos.splice(index,1);
+    }
+    localStorage.setItem("pedido_en_proceso",JSON.stringify(pedido_en_proceso));
+    pintarVerPedido();
   }
     // Botón "Comandar"
   const botonComandar = container.querySelector('#comandar');
