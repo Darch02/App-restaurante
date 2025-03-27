@@ -1,0 +1,10 @@
+{
+  "appId": "com.orderly.app",
+  "appName": "orderly",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
+    }
+  }
+}
