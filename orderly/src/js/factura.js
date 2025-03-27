@@ -34,7 +34,7 @@ async function Factura(navigateTo) {
                 <div class='pedido-mesa'>
                     <h3>Id pedido : `+index+`</h3>
                     <h3>Alimentos</h3>
-                    <div class='alimentos'>
+                    <div class='alimentos' class= "contenedor-pedido">
                     </div>
                 </div>
                 `;

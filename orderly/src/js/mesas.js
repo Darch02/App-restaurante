@@ -45,7 +45,6 @@ async function Mesas(navigateTo) {
         selector.addEventListener("change", (event) => {
             if(event.target.value !== 'Añadir sector ..'){
                 pintarSector(event.target.value);
-                localStorage.setItem('sectorActual', event.target.value);
             }else{
                 navigateTo('/popUpAniadirSector');
             }
@@ -90,6 +89,7 @@ async function Mesas(navigateTo) {
         mesasSector= Mesas.filter((mesa) => mesa.sector === seleccion);
         ContenedorMesas.replaceChildren();
         pintarMesas(mesasSector);
+        localStorage.setItem('sectorActual', seleccion);
     };
 
     // navegación pop up añadir mesa

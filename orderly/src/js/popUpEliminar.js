@@ -5,6 +5,8 @@ async function PopUpEliminar(navigateTo) {
     container.innerHTML = htmlText.trim(); // Insertar el HTML cargado
 
     const Sectores = JSON.parse(localStorage.getItem('sectores')) || [];
+    let Mesas =JSON.parse(localStorage.getItem('Mesas')) || [];
+
 
     const sectorActual = localStorage.getItem('sectorActual');
 
@@ -14,6 +16,10 @@ async function PopUpEliminar(navigateTo) {
         if (index !== -1) {
             Sectores.splice(index,1);
             localStorage.setItem('sectores', JSON.stringify(Sectores));
+            
+            Mesas = Mesas.filter(m => m.sector !== sector);
+            localStorage.setItem("Mesas", JSON.stringify(Mesas)); // se eliminan todas las mesas del sector
+
             alert('el sector se ha eliminado correctamente');
             if (container.parentElement) {
                 document.body.removeChild(container.parentElement);
