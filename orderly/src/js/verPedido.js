@@ -46,7 +46,7 @@ async function verPedido(navigateTo) {
           divPedido.innerHTML = `
               <p><strong>Producto:</strong> ${item.nombreProducto}</p>
               <p><strong>Precio:</strong> $${item.precio}</p>
-              <p><strong>Cantidad:</strong> <img id='icono-eliminar' src="../src/assets/icono-eliminar.svg" > ${item.cantidad}</img></p>
+              <p><strong>Cantidad:</strong> <img id='icono-eliminar' src="/assets/icono-eliminar.svg" > ${item.cantidad}</img></p>
           `;
          const btnEliminarItem = divPedido.querySelector('#icono-eliminar');
          btnEliminarItem.addEventListener('click', () => EliminarItem(index));
